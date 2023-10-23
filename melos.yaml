@@ -1,0 +1,15 @@
+name: sustainity
+
+packages:
+  - "sustainity-api"
+
+scripts:
+  packages:
+    exec: dart pub get
+
+  analyze:
+    exec: dart pub get && dart analyze
+
+  test:
+    exec: dart test
+

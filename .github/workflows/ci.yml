@@ -1,0 +1,28 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+
+  ci:
+    name: Analyze the libs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Configure
+        run: dart pub global activate melos
+
+      - name: Analyze
+        run: |
+          melos run packages
+          melos run analyze
+

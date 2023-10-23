@@ -1,0 +1,609 @@
+openapi: 3.0.0
+
+info:
+  title: Sustainity
+  description: |
+    API for the sustaininty backend
+  version: 0.3.0
+
+paths:
+  
+  /:
+    get:
+      operationId: checkHealth
+      summary: Health check
+      description: Service health check.
+      responses:
+        "200":
+          description: "OK"
+
+  /search/text:
+    parameters:
+      - $ref: "#/components/parameters/query"
+    get:
+      operationId: searchByText
+      summary: Text search.
+      description: Returns results of a search using a text query.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/textSearchResults"
+                required: true
+                nullable: false
+
+  /library:
+    get:
+      operationId: getLibrary
+      summary: Get library contents.
+      description: Returns a list of summaries of all library items.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/libraryContents"
+
+  /library/{topic}:
+    parameters:
+      - $ref: "#/components/parameters/libraryTopic"
+    get:
+      operationId: getLibraryItem
+      summary: Get library item.
+      description: Returns a full library item.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/libraryItemFull"
+  
+  /organisation/{id}:
+    parameters:
+      - $ref: "#/components/parameters/id"
+    get:
+      operationId: getOrganisation
+      summary: Get organisation.
+      description: Returns full info about a specified organisation.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/organisationFull"
+  
+  /product/{id}:
+    parameters:
+      - $ref: "#/components/parameters/id"
+      - $ref: "#/components/parameters/regionCode"
+    get:
+      operationId: getProduct
+      summary: Get product.
+      description: Returns full info about a specified product.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/productFull"
+  
+  /product/{id}/alternatives:
+    parameters:
+      - $ref: "#/components/parameters/id"
+    get:
+      operationId: getAlternatives
+      summary: Get product alternatives.
+      description: Returns a list of alternative products for each of products category.
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/categoryAlternatives"
+
+components:
+  parameters:
+    id:
+      name: id
+      description: ID of a resource.
+      in: path
+      required: true
+      schema:
+        $ref: "#/components/schemas/id"
+
+    regionCode:
+      name: region
+      description: Region code.
+      in: query
+      required: false
+      schema:
+        $ref: "#/components/schemas/regionCode"
+
+    libraryTopic:
+      name: topic
+      description: Library topic.
+      in: path
+      required: true
+      schema:
+        $ref: "#/components/schemas/libraryTopic"
+
+    query:
+      name: query
+      description: Text query for search.
+      in: query
+      required: true
+      schema:
+        $ref: "#/components/schemas/shortString"
+
+  schemas:
+    id:
+      description: ID of a resource.
+      type: string
+      maxLength: 32
+
+    accuracy:
+      description: Match accuracy.
+      type: number
+      format: double
+      minimum: 0.0
+      maximum: 1.0
+
+    dataSource:
+      description: Describes where the related data was retrieved from.
+      type: string
+      enum: ["wiki", "off", "eu"]
+    
+    symbol:
+      description: A single letter symbol.
+      type: string
+      minLength: 1
+      maxLength: 1
+
+    regionCode:
+      description: Code of a region.
+      type: string
+      minLength: 2
+      maxLength: 2
+
+    gtin:
+      description: Global Trade Item Number.
+      type: string
+      maxLength: 14
+
+    shortString:
+      description: Short string for labels, titles, summaries...
+      type: string
+      maxLength: 1024
+
+    longString:
+      description: Long string for descriptions, articles...
+      type: string
+      maxLength: 1048576
+
+    shortText:
+      description: Short text with its source.
+      type: object
+      properties:
+        text:
+          $ref: "#/components/schemas/shortString"
+        source:
+          $ref: "#/components/schemas/dataSource"
+      required:
+        - text
+        - source
+
+    longText:
+      description: Long text with its source.
+      type: object
+      properties:
+        text:
+          $ref: "#/components/schemas/longString"
+        source:
+          $ref: "#/components/schemas/dataSource"
+      required:
+        - text
+        - source
+
+    image:
+      description: Image path/URL with its source.
+      type: object
+      properties:
+        image:
+          $ref: "#/components/schemas/shortString"
+        source:
+          $ref: "#/components/schemas/dataSource"
+      required:
+        - image
+        - source
+
+    presentationEntry:
+      description: An entry in a presentation.
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          $ref: "#/components/schemas/shortString"
+        score:
+          type: integer
+      required:
+        - id
+        - name
+        - score
+
+    presentation:
+      description: Additional data to present together with a library item.
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/presentationEntry"
+      required:
+        - data
+
+    libraryTopic:
+      description: Name of a topic in the library.
+      type: string
+      enum:
+        - info:main
+        - info:for_producers
+        - info:faq
+        - data:wiki
+        - data:open_food_facts
+        - cert:bcorp
+        - cert:eu_ecolabel
+        - cert:tco
+        - cert:fti
+        - other:not_found
+
+    libraryItemShort:
+      description: Short summary of a library item.
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/libraryTopic"
+        title:
+          $ref: "#/components/schemas/shortString"
+        summary:
+          $ref: "#/components/schemas/shortString"
+      required:
+        - id
+        - title
+        - summary
+
+    libraryItemFull:
+      description: Full contents of a library item.
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/libraryTopic"
+        title:
+          $ref: "#/components/schemas/shortString"
+        summary:
+          $ref: "#/components/schemas/shortString"
+        article:
+          $ref: "#/components/schemas/longString"
+        presentation:
+          $ref: "#/components/schemas/presentation"
+          nullable: true
+          default: null
+      required:
+        - id
+        - title
+        - summary
+        - article
+
+    libraryContents:
+      description: List of all items in the library.
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/libraryItemShort"
+      required:
+        - items
+
+    sustainityScoreBranch:
+      description: Part of explanation of calculation of the Sustainity score.
+      type: object
+      properties:
+        symbol:
+          $ref: "#/components/schemas/symbol"
+        description:
+          $ref: "#/components/schemas/shortString"
+        weight:
+          type: integer
+        score:
+          type: number
+          format: double
+        branches:
+          type: array
+          items: 
+            $ref: "#/components/schemas/sustainityScoreBranch"
+      required:
+        - symbol
+        - decription
+        - weight
+        - score
+
+    sustainityScore:
+      description: Explanation of calculation of the Sustainity score.
+      type: object
+      properties:
+        total:
+          type: number
+          format: double
+        tree:
+          type: array
+          items:
+            $ref: "#/components/schemas/sustainityScoreBranch"
+      required:
+        - total
+        - tree
+
+    badgeName:
+      description: Name of a badge.
+      type: string
+      enum: ["bcorp", "eu", "tco"]
+
+    scorerName:
+      description: Name of a scorer.
+      type: string
+      enum: ["fti"]
+
+    bCorpMedallion:
+      description: Details of BCorp evaluation.
+      type: object
+      properties:
+        medallionVariant:
+          type: string
+        id:
+          $ref: "#/components/schemas/id"
+      required:
+        - medallionVariant
+        - id
+
+    euEcolabelMedallion:
+      description: Details of EU Ecolabel evaluation.
+      type: object
+      properties:
+        medallionVariant:
+          type: string
+        matchAccuracy:
+          $ref: "#/components/schemas/accuracy"
+      required:
+        - medallionVariant
+        - matchAccuracy
+
+    ftiMedallion:
+      description: Details of Fashion Transparency Index evaluation.
+      type: object
+      properties:
+        medallionVariant:
+          type: string
+        score:
+          type: integer
+      required:
+        - medallionVariant
+        - score
+
+    sustainityMedallion:
+      description: Details of Sustainity evaluation.
+      type: object
+      properties:
+        medallionVariant:
+          type: string
+        score:
+          $ref: "#/components/schemas/sustainityScore"
+      required:
+        - medallionVariant
+        - score
+
+    tcoMedallion:
+      description: Details of TCO evaluation.
+      type: object
+      properties:
+        medallionVariant:
+          type: string
+        brandName:
+          $ref: "#/components/schemas/shortString"
+      required:
+        - medallionVariant
+        - brandName
+
+    medallion:
+      description: Combines data from any medallion.
+      oneOf:
+        - $ref: "#/components/schemas/bCorpMedallion"
+        - $ref: "#/components/schemas/euEcolabelMedallion"
+        - $ref: "#/components/schemas/ftiMedallion"
+        - $ref: "#/components/schemas/sustainityMedallion"
+        - $ref: "#/components/schemas/tcoMedallion"
+      discriminator:
+        propertyName: medallionVariant
+        
+    organisationShort:
+      description: Extract from organisation data.
+      type: object
+      properties:
+        organisationId:
+          $ref: "#/components/schemas/id"
+        name:
+          $ref: "#/components/schemas/shortString"
+        description:
+          $ref: "#/components/schemas/longString"
+        badges:
+          type: array
+          items:
+            $ref: "#/components/schemas/badgeName"
+        scores:
+          type: object
+          additionalProperties:
+            type: integer
+      required:
+        - organisationId
+        - name
+        - badges
+        - scores     
+
+    organisationFull:
+      description: Full organisation data.
+      type: object
+      properties:
+        organisationId:
+          $ref: "#/components/schemas/id"
+        names:
+          type: array
+          items:
+            $ref: "#/components/schemas/shortText"
+        descriptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/longText"
+        images:
+          type: array
+          items:
+            $ref: "#/components/schemas/image"
+        websites:
+          type: array
+          items:
+            $ref: "#/components/schemas/shortString"
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/productShort"
+        medallions:
+          type: array
+          items:
+            $ref: "#/components/schemas/medallion"
+      required:
+        - organisationId
+        - name
+        - description
+        - images
+        - websites
+        - products
+        - medallions
+  
+    productShort:
+      description: Extract from product data.
+      type: object
+      properties:
+        productId:
+          $ref: "#/components/schemas/id"
+        name:
+          $ref: "#/components/schemas/shortString"
+        description:
+          $ref: "#/components/schemas/longString"
+        badges:
+          type: array
+          items:
+            $ref: "#/components/schemas/badgeName"
+        scores:
+          type: object
+          additionalProperties:
+            type: integer
+      required:
+        - productId
+        - name
+        - badges
+        - scores
+            
+    productFull:
+      description: Full product data.
+      type: object
+      properties:
+        productId:
+          $ref: "#/components/schemas/id"
+        gtins:
+          type: array
+          items:
+            $ref: "#/components/schemas/gtin"
+        names:
+          type: array
+          items:
+            $ref: "#/components/schemas/shortText"
+        descriptions:
+          type: array
+          items:
+            $ref: "#/components/schemas/longText"
+        images:
+          type: array
+          items:
+            $ref: "#/components/schemas/image"
+        manufacturers:
+          type: array
+          items:
+            $ref: "#/components/schemas/organisationShort"
+        alternatives:
+          type: array
+          items:
+            $ref: "#/components/schemas/categoryAlternatives"
+        medallions:
+          type: array
+          items:
+            $ref: "#/components/schemas/medallion"
+      required:
+        - productId
+        - name
+        - images
+        - manufacturers
+        - alternatives
+        - medallions
+
+    categoryAlternatives:
+      description: List of product alternative in the given category.
+      type: object
+      properties:
+        category:
+          $ref: "#/components/schemas/shortString"
+        alternatives:
+          type: array
+          items:
+            $ref: "#/components/schemas/productShort"
+      required:
+        - category
+        - alternatives
+
+    textSearchResultVariant:
+      description: Variant for text search result entry.
+      type: string
+      enum: ["product", "organisation"]
+
+    textSearchResult:
+      description: An entry in text search results.
+      type: object
+      properties:
+        variant:
+          $ref: "#/components/schemas/textSearchResultVariant"
+        id:
+          $ref: "#/components/schemas/id"
+        label:
+          $ref: "#/components/schemas/shortString"
+      required:
+        - variant
+        - id
+        - label
+
+    textSearchResults:
+      description: List of results of a text search.
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/textSearchResult"
+      required:
+        - results
+
