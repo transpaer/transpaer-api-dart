@@ -24,8 +24,8 @@ class TcoMedallion {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TcoMedallion &&
-     other.medallionVariant == medallionVariant &&
-     other.brandName == brandName;
+    other.medallionVariant == medallionVariant &&
+    other.brandName == brandName;
 
   @override
   int get hashCode =>

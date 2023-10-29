@@ -41,11 +41,11 @@ class LibraryItemFull {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LibraryItemFull &&
-     other.id == id &&
-     other.title == title &&
-     other.summary == summary &&
-     other.article == article &&
-     other.presentation == presentation;
+    other.id == id &&
+    other.title == title &&
+    other.summary == summary &&
+    other.article == article &&
+    other.presentation == presentation;
 
   @override
   int get hashCode =>

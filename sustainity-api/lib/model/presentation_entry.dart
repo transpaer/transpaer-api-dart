@@ -28,9 +28,9 @@ class PresentationEntry {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PresentationEntry &&
-     other.id == id &&
-     other.name == name &&
-     other.score == score;
+    other.id == id &&
+    other.name == name &&
+    other.score == score;
 
   @override
   int get hashCode =>

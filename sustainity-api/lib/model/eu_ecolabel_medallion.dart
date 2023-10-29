@@ -27,8 +27,8 @@ class EuEcolabelMedallion {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EuEcolabelMedallion &&
-     other.medallionVariant == medallionVariant &&
-     other.matchAccuracy == matchAccuracy;
+    other.medallionVariant == medallionVariant &&
+    other.matchAccuracy == matchAccuracy;
 
   @override
   int get hashCode =>

@@ -23,8 +23,8 @@ class SustainityScore {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SustainityScore &&
-     other.total == total &&
-     other.tree == tree;
+    other.total == total &&
+    _deepEquality.equals(other.tree, tree);
 
   @override
   int get hashCode =>

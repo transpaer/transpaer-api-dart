@@ -40,11 +40,11 @@ class SustainityScoreBranch {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SustainityScoreBranch &&
-     other.symbol == symbol &&
-     other.description == description &&
-     other.weight == weight &&
-     other.score == score &&
-     other.branches == branches;
+    other.symbol == symbol &&
+    other.description == description &&
+    other.weight == weight &&
+    other.score == score &&
+    _deepEquality.equals(other.branches, branches);
 
   @override
   int get hashCode =>

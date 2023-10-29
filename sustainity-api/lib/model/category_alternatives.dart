@@ -24,8 +24,8 @@ class CategoryAlternatives {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CategoryAlternatives &&
-     other.category == category &&
-     other.alternatives == alternatives;
+    other.category == category &&
+    _deepEquality.equals(other.alternatives, alternatives);
 
   @override
   int get hashCode =>

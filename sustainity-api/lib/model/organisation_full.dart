@@ -39,13 +39,13 @@ class OrganisationFull {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrganisationFull &&
-     other.organisationId == organisationId &&
-     other.names == names &&
-     other.descriptions == descriptions &&
-     other.images == images &&
-     other.websites == websites &&
-     other.products == products &&
-     other.medallions == medallions;
+    other.organisationId == organisationId &&
+    _deepEquality.equals(other.names, names) &&
+    _deepEquality.equals(other.descriptions, descriptions) &&
+    _deepEquality.equals(other.images, images) &&
+    _deepEquality.equals(other.websites, websites) &&
+    _deepEquality.equals(other.products, products) &&
+    _deepEquality.equals(other.medallions, medallions);
 
   @override
   int get hashCode =>
@@ -96,8 +96,8 @@ class OrganisationFull {
         names: ShortText.listFromJson(json[r'names']),
         descriptions: LongText.listFromJson(json[r'descriptions']),
         images: Image.listFromJson(json[r'images']),
-        websites: json[r'websites'] is List
-            ? (json[r'websites'] as List).cast<String>()
+        websites: json[r'websites'] is Iterable
+            ? (json[r'websites'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         products: ProductShort.listFromJson(json[r'products']),
         medallions: Medallion.listFromJson(json[r'medallions']),

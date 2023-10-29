@@ -24,8 +24,8 @@ class ShortText {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ShortText &&
-     other.text == text &&
-     other.source_ == source_;
+    other.text == text &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>

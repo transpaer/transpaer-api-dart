@@ -23,8 +23,8 @@ class SustainityMedallion {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SustainityMedallion &&
-     other.medallionVariant == medallionVariant &&
-     other.score == score;
+    other.medallionVariant == medallionVariant &&
+    other.score == score;
 
   @override
   int get hashCode =>

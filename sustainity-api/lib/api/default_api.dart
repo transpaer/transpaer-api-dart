@@ -112,7 +112,7 @@ class DefaultApi {
       final responseBody = await _decodeBodyBytes(response);
       return (await apiClient.deserializeAsync(responseBody, 'List<CategoryAlternatives>') as List)
         .cast<CategoryAlternatives>()
-        .toList();
+        .toList(growable: false);
 
     }
     return null;

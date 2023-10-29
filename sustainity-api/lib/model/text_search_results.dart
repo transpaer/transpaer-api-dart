@@ -20,7 +20,7 @@ class TextSearchResults {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TextSearchResults &&
-     other.results == results;
+    _deepEquality.equals(other.results, results);
 
   @override
   int get hashCode =>

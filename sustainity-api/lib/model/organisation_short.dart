@@ -41,11 +41,11 @@ class OrganisationShort {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrganisationShort &&
-     other.organisationId == organisationId &&
-     other.name == name &&
-     other.description == description &&
-     other.badges == badges &&
-     other.scores == scores;
+    other.organisationId == organisationId &&
+    other.name == name &&
+    other.description == description &&
+    _deepEquality.equals(other.badges, badges) &&
+    _deepEquality.equals(other.scores, scores);
 
   @override
   int get hashCode =>

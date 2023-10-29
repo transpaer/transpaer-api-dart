@@ -24,8 +24,8 @@ class LongText {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LongText &&
-     other.text == text &&
-     other.source_ == source_;
+    other.text == text &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>

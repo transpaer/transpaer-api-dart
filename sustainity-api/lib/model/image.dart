@@ -24,8 +24,8 @@ class Image {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Image &&
-     other.image == image &&
-     other.source_ == source_;
+    other.image == image &&
+    other.source_ == source_;
 
   @override
   int get hashCode =>

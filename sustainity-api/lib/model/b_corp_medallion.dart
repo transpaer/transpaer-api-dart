@@ -24,8 +24,8 @@ class BCorpMedallion {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BCorpMedallion &&
-     other.medallionVariant == medallionVariant &&
-     other.id == id;
+    other.medallionVariant == medallionVariant &&
+    other.id == id;
 
   @override
   int get hashCode =>

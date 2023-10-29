@@ -20,7 +20,7 @@ class Presentation {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Presentation &&
-     other.data == data;
+    _deepEquality.equals(other.data, data);
 
   @override
   int get hashCode =>

@@ -42,14 +42,14 @@ class ProductFull {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductFull &&
-     other.productId == productId &&
-     other.gtins == gtins &&
-     other.names == names &&
-     other.descriptions == descriptions &&
-     other.images == images &&
-     other.manufacturers == manufacturers &&
-     other.alternatives == alternatives &&
-     other.medallions == medallions;
+    other.productId == productId &&
+    _deepEquality.equals(other.gtins, gtins) &&
+    _deepEquality.equals(other.names, names) &&
+    _deepEquality.equals(other.descriptions, descriptions) &&
+    _deepEquality.equals(other.images, images) &&
+    _deepEquality.equals(other.manufacturers, manufacturers) &&
+    _deepEquality.equals(other.alternatives, alternatives) &&
+    _deepEquality.equals(other.medallions, medallions);
 
   @override
   int get hashCode =>
@@ -99,8 +99,8 @@ class ProductFull {
 
       return ProductFull(
         productId: mapValueOfType<String>(json, r'productId')!,
-        gtins: json[r'gtins'] is List
-            ? (json[r'gtins'] as List).cast<String>()
+        gtins: json[r'gtins'] is Iterable
+            ? (json[r'gtins'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         names: ShortText.listFromJson(json[r'names']),
         descriptions: LongText.listFromJson(json[r'descriptions']),

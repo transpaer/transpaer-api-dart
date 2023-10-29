@@ -28,9 +28,9 @@ class TextSearchResult {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TextSearchResult &&
-     other.variant == variant &&
-     other.id == id &&
-     other.label == label;
+    other.variant == variant &&
+    other.id == id &&
+    other.label == label;
 
   @override
   int get hashCode =>

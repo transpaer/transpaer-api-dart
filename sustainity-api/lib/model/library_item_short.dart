@@ -28,9 +28,9 @@ class LibraryItemShort {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LibraryItemShort &&
-     other.id == id &&
-     other.title == title &&
-     other.summary == summary;
+    other.id == id &&
+    other.title == title &&
+    other.summary == summary;
 
   @override
   int get hashCode =>
