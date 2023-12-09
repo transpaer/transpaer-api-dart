@@ -16,11 +16,6 @@ void main() {
   // final instance = FtiMedallion();
 
   group('test FtiMedallion', () {
-    // String medallionVariant
-    test('to test the property `medallionVariant`', () async {
-      // TODO
-    });
-
     // int score
     test('to test the property `score`', () async {
       // TODO

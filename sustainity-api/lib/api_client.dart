@@ -208,6 +208,8 @@ class ApiClient {
           return LongText.fromJson(value);
         case 'Medallion':
           return Medallion.fromJson(value);
+        case 'MedallionVariant':
+          return MedallionVariantTypeTransformer().decode(value);
         case 'OrganisationFull':
           return OrganisationFull.fromJson(value);
         case 'OrganisationShort':
@@ -230,6 +232,8 @@ class ApiClient {
           return SustainityScore.fromJson(value);
         case 'SustainityScoreBranch':
           return SustainityScoreBranch.fromJson(value);
+        case 'SustainityScoreCategory':
+          return SustainityScoreCategoryTypeTransformer().decode(value);
         case 'TcoMedallion':
           return TcoMedallion.fromJson(value);
         case 'TextSearchResult':

@@ -16,31 +16,33 @@ void main() {
   // final instance = Medallion();
 
   group('test Medallion', () {
-    // String medallionVariant
-    test('to test the property `medallionVariant`', () async {
+    // MedallionVariant variant
+    test('to test the property `variant`', () async {
       // TODO
     });
 
-    // ID of a resource.
-    // String id
-    test('to test the property `id`', () async {
+    // BCorpMedallion bcorp
+    test('to test the property `bcorp`', () async {
       // TODO
     });
 
-    // Match accuracy.
-    // double matchAccuracy
-    test('to test the property `matchAccuracy`', () async {
+    // EuEcolabelMedallion euEcolabel
+    test('to test the property `euEcolabel`', () async {
       // TODO
     });
 
-    // SustainityScore score
-    test('to test the property `score`', () async {
+    // FtiMedallion fti
+    test('to test the property `fti`', () async {
       // TODO
     });
 
-    // Short string for labels, titles, summaries...
-    // String brandName
-    test('to test the property `brandName`', () async {
+    // SustainityMedallion sustainity
+    test('to test the property `sustainity`', () async {
+      // TODO
+    });
+
+    // TcoMedallion tco
+    test('to test the property `tco`', () async {
       // TODO
     });
 

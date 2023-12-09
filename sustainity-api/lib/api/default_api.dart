@@ -66,7 +66,10 @@ class DefaultApi {
   ///
   /// * [String] id (required):
   ///   ID of a resource.
-  Future<Response> getAlternativesWithHttpInfo(String id,) async {
+  ///
+  /// * [String] region:
+  ///   Region code.
+  Future<Response> getAlternativesWithHttpInfo(String id, { String? region, }) async {
     // ignore: prefer_const_declarations
     final path = r'/product/{id}/alternatives'
       .replaceAll('{id}', id);
@@ -77,6 +80,10 @@ class DefaultApi {
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
+
+    if (region != null) {
+      queryParams.addAll(_queryParams('', 'region', region));
+    }
 
     const contentTypes = <String>[];
 
@@ -100,8 +107,11 @@ class DefaultApi {
   ///
   /// * [String] id (required):
   ///   ID of a resource.
-  Future<List<CategoryAlternatives>?> getAlternatives(String id,) async {
-    final response = await getAlternativesWithHttpInfo(id,);
+  ///
+  /// * [String] region:
+  ///   Region code.
+  Future<List<CategoryAlternatives>?> getAlternatives(String id, { String? region, }) async {
+    final response = await getAlternativesWithHttpInfo(id,  region: region, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

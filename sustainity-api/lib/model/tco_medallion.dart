@@ -13,32 +13,26 @@ part of openapi.api;
 class TcoMedallion {
   /// Returns a new [TcoMedallion] instance.
   TcoMedallion({
-    required this.medallionVariant,
     required this.brandName,
   });
-
-  String medallionVariant;
 
   /// Short string for labels, titles, summaries...
   String brandName;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TcoMedallion &&
-    other.medallionVariant == medallionVariant &&
     other.brandName == brandName;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
     (brandName.hashCode);
 
   @override
-  String toString() => 'TcoMedallion[medallionVariant=$medallionVariant, brandName=$brandName]';
+  String toString() => 'TcoMedallion[brandName=$brandName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
       json[r'brandName'] = this.brandName;
     return json;
   }
@@ -62,7 +56,6 @@ class TcoMedallion {
       }());
 
       return TcoMedallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
         brandName: mapValueOfType<String>(json, r'brandName')!,
       );
     }
@@ -111,7 +104,6 @@ class TcoMedallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
     'brandName',
   };
 }

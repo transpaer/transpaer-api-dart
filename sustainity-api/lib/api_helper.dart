@@ -64,8 +64,14 @@ String parameterToString(dynamic value) {
   if (value is LibraryTopic) {
     return LibraryTopicTypeTransformer().encode(value).toString();
   }
+  if (value is MedallionVariant) {
+    return MedallionVariantTypeTransformer().encode(value).toString();
+  }
   if (value is ScorerName) {
     return ScorerNameTypeTransformer().encode(value).toString();
+  }
+  if (value is SustainityScoreCategory) {
+    return SustainityScoreCategoryTypeTransformer().encode(value).toString();
   }
   if (value is TextSearchResultVariant) {
     return TextSearchResultVariantTypeTransformer().encode(value).toString();

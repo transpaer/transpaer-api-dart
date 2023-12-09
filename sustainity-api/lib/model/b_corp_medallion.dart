@@ -13,32 +13,26 @@ part of openapi.api;
 class BCorpMedallion {
   /// Returns a new [BCorpMedallion] instance.
   BCorpMedallion({
-    required this.medallionVariant,
     required this.id,
   });
-
-  String medallionVariant;
 
   /// ID of a resource.
   String id;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is BCorpMedallion &&
-    other.medallionVariant == medallionVariant &&
     other.id == id;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
     (id.hashCode);
 
   @override
-  String toString() => 'BCorpMedallion[medallionVariant=$medallionVariant, id=$id]';
+  String toString() => 'BCorpMedallion[id=$id]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
       json[r'id'] = this.id;
     return json;
   }
@@ -62,7 +56,6 @@ class BCorpMedallion {
       }());
 
       return BCorpMedallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
         id: mapValueOfType<String>(json, r'id')!,
       );
     }
@@ -111,7 +104,6 @@ class BCorpMedallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
     'id',
   };
 }

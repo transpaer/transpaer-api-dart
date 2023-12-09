@@ -15,7 +15,14 @@ paths:
       description: Service health check.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /search/text:
     parameters:
@@ -26,13 +33,20 @@ paths:
       description: Returns results of a search using a text query.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/textSearchResults"
                 required: true
                 nullable: false
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /library:
     get:
@@ -41,11 +55,18 @@ paths:
       description: Returns a list of summaries of all library items.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/libraryContents"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /library/{topic}:
     parameters:
@@ -56,11 +77,27 @@ paths:
       description: Returns a full library item.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/libraryItemFull"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+        "404":
+          description: "Not found"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /organisation/{id}:
     parameters:
@@ -71,11 +108,27 @@ paths:
       description: Returns full info about a specified organisation.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/organisationFull"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+        "404":
+          description: "Not found"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /product/{id}:
     parameters:
@@ -87,28 +140,61 @@ paths:
       description: Returns full info about a specified product.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/productFull"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+        "404":
+          description: "Not found"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
   /product/{id}/alternatives:
     parameters:
       - $ref: "#/components/parameters/id"
+      - $ref: "#/components/parameters/regionCode"
     get:
       operationId: getAlternatives
       summary: Get product alternatives.
       description: Returns a list of alternative products for each of products category.
       responses:
         "200":
-          description: "OK"
+          description: "Ok"
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: "#/components/schemas/categoryAlternatives"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
+        "404":
+          description: "Not found"
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/corsOrigin"
+            Access-Control-Allow-Methods:
+              $ref: "#/components/headers/corsMethods"
+            Access-Control-Allow-Headers:
+              $ref: "#/components/headers/corsHeaders"
 
 components:
   parameters:
@@ -161,12 +247,6 @@ components:
       description: Describes where the related data was retrieved from.
       type: string
       enum: ["wiki", "off", "eu"]
-
-    symbol:
-      description: A single letter symbol.
-      type: string
-      minLength: 1
-      maxLength: 1
 
     regionCode:
       description: Code of a region.
@@ -314,14 +394,27 @@ components:
       required:
         - items
 
+    sustainityScoreCategory:
+      description: Categories in the sustainity score
+      type: string
+      enum:
+        - dataAvailability
+        - producerKnown
+        - productionPlaceKnown
+        - idKnown
+        - categoryAssigned
+        - category
+        - warrantyLength
+        - numCerts
+        - atLeastOneCert
+        - atLeastTwoCerts
+
     sustainityScoreBranch:
       description: Part of explanation of calculation of the Sustainity score.
       type: object
       properties:
-        symbol:
-          $ref: "#/components/schemas/symbol"
-        description:
-          $ref: "#/components/schemas/shortString"
+        category:
+          $ref: "#/components/schemas/sustainityScoreCategory"
         weight:
           type: integer
         score:
@@ -332,10 +425,10 @@ components:
           items:
             $ref: "#/components/schemas/sustainityScoreBranch"
       required:
-        - symbol
-        - decription
+        - category
         - weight
         - score
+        - branches
 
     sustainityScore:
       description: Explanation of calculation of the Sustainity score.
@@ -366,72 +459,75 @@ components:
       description: Details of BCorp evaluation.
       type: object
       properties:
-        medallionVariant:
-          type: string
         id:
           $ref: "#/components/schemas/id"
       required:
-        - medallionVariant
         - id
 
     euEcolabelMedallion:
       description: Details of EU Ecolabel evaluation.
       type: object
       properties:
-        medallionVariant:
-          type: string
         matchAccuracy:
           $ref: "#/components/schemas/accuracy"
       required:
-        - medallionVariant
         - matchAccuracy
 
     ftiMedallion:
       description: Details of Fashion Transparency Index evaluation.
       type: object
       properties:
-        medallionVariant:
-          type: string
         score:
           type: integer
       required:
-        - medallionVariant
         - score
 
     sustainityMedallion:
       description: Details of Sustainity evaluation.
       type: object
       properties:
-        medallionVariant:
-          type: string
         score:
           $ref: "#/components/schemas/sustainityScore"
       required:
-        - medallionVariant
         - score
 
     tcoMedallion:
       description: Details of TCO evaluation.
       type: object
       properties:
-        medallionVariant:
-          type: string
         brandName:
           $ref: "#/components/schemas/shortString"
       required:
-        - medallionVariant
         - brandName
+
+    medallionVariant:
+      description: Medallion variant.
+      type: string
+      enum:
+        - bCorp
+        - euEcolabel
+        - fti
+        - sustainity
+        - tco
 
     medallion:
       description: Combines data from any medallion.
-      oneOf:
-        - $ref: "#/components/schemas/bCorpMedallion"
-        - $ref: "#/components/schemas/euEcolabelMedallion"
-        - $ref: "#/components/schemas/ftiMedallion"
-        - $ref: "#/components/schemas/sustainityMedallion"
-        - $ref: "#/components/schemas/tcoMedallion"
-      discriminator:
-        propertyName: medallionVariant
+      type: object
+      properties:
+        variant:
+          $ref: "#/components/schemas/medallionVariant"
+        bcorp:
+          $ref: "#/components/schemas/bCorpMedallion"
+        euEcolabel:
+          $ref: "#/components/schemas/euEcolabelMedallion"
+        fti:
+          $ref: "#/components/schemas/ftiMedallion"
+        sustainity:
+          $ref: "#/components/schemas/sustainityMedallion"
+        tco:
+          $ref: "#/components/schemas/tcoMedallion"
+      required:
+        - variant
 
     organisationShort:
       description: Extract from organisation data.
@@ -606,4 +702,18 @@ components:
             $ref: "#/components/schemas/textSearchResult"
       required:
         - results
+
+  headers:
+    corsOrigin:
+      schema:
+        type: string
+      required: true
+    corsMethods:
+      schema:
+        type: string
+      required: true
+    corsHeaders:
+      schema:
+        type: string
+      required: true
 

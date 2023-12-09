@@ -13,11 +13,8 @@ part of openapi.api;
 class EuEcolabelMedallion {
   /// Returns a new [EuEcolabelMedallion] instance.
   EuEcolabelMedallion({
-    required this.medallionVariant,
     required this.matchAccuracy,
   });
-
-  String medallionVariant;
 
   /// Match accuracy.
   ///
@@ -27,21 +24,18 @@ class EuEcolabelMedallion {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is EuEcolabelMedallion &&
-    other.medallionVariant == medallionVariant &&
     other.matchAccuracy == matchAccuracy;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
     (matchAccuracy.hashCode);
 
   @override
-  String toString() => 'EuEcolabelMedallion[medallionVariant=$medallionVariant, matchAccuracy=$matchAccuracy]';
+  String toString() => 'EuEcolabelMedallion[matchAccuracy=$matchAccuracy]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
       json[r'matchAccuracy'] = this.matchAccuracy;
     return json;
   }
@@ -65,7 +59,6 @@ class EuEcolabelMedallion {
       }());
 
       return EuEcolabelMedallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
         matchAccuracy: mapValueOfType<double>(json, r'matchAccuracy')!,
       );
     }
@@ -114,7 +107,6 @@ class EuEcolabelMedallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
     'matchAccuracy',
   };
 }

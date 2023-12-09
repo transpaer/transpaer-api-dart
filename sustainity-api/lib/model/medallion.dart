@@ -13,56 +13,106 @@ part of openapi.api;
 class Medallion {
   /// Returns a new [Medallion] instance.
   Medallion({
-    required this.medallionVariant,
-    required this.id,
-    required this.matchAccuracy,
-    required this.score,
-    required this.brandName,
+    required this.variant,
+    this.bcorp,
+    this.euEcolabel,
+    this.fti,
+    this.sustainity,
+    this.tco,
   });
 
-  String medallionVariant;
+  MedallionVariant variant;
 
-  /// ID of a resource.
-  String id;
-
-  /// Match accuracy.
   ///
-  /// Minimum value: 0.0
-  /// Maximum value: 1.0
-  double matchAccuracy;
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  BCorpMedallion? bcorp;
 
-  SustainityScore score;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  EuEcolabelMedallion? euEcolabel;
 
-  /// Short string for labels, titles, summaries...
-  String brandName;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  FtiMedallion? fti;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  SustainityMedallion? sustainity;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  TcoMedallion? tco;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is Medallion &&
-    other.medallionVariant == medallionVariant &&
-    other.id == id &&
-    other.matchAccuracy == matchAccuracy &&
-    other.score == score &&
-    other.brandName == brandName;
+    other.variant == variant &&
+    other.bcorp == bcorp &&
+    other.euEcolabel == euEcolabel &&
+    other.fti == fti &&
+    other.sustainity == sustainity &&
+    other.tco == tco;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
-    (id.hashCode) +
-    (matchAccuracy.hashCode) +
-    (score.hashCode) +
-    (brandName.hashCode);
+    (variant.hashCode) +
+    (bcorp == null ? 0 : bcorp!.hashCode) +
+    (euEcolabel == null ? 0 : euEcolabel!.hashCode) +
+    (fti == null ? 0 : fti!.hashCode) +
+    (sustainity == null ? 0 : sustainity!.hashCode) +
+    (tco == null ? 0 : tco!.hashCode);
 
   @override
-  String toString() => 'Medallion[medallionVariant=$medallionVariant, id=$id, matchAccuracy=$matchAccuracy, score=$score, brandName=$brandName]';
+  String toString() => 'Medallion[variant=$variant, bcorp=$bcorp, euEcolabel=$euEcolabel, fti=$fti, sustainity=$sustainity, tco=$tco]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
-      json[r'id'] = this.id;
-      json[r'matchAccuracy'] = this.matchAccuracy;
-      json[r'score'] = this.score;
-      json[r'brandName'] = this.brandName;
+      json[r'variant'] = this.variant;
+    if (this.bcorp != null) {
+      json[r'bcorp'] = this.bcorp;
+    } else {
+      json[r'bcorp'] = null;
+    }
+    if (this.euEcolabel != null) {
+      json[r'euEcolabel'] = this.euEcolabel;
+    } else {
+      json[r'euEcolabel'] = null;
+    }
+    if (this.fti != null) {
+      json[r'fti'] = this.fti;
+    } else {
+      json[r'fti'] = null;
+    }
+    if (this.sustainity != null) {
+      json[r'sustainity'] = this.sustainity;
+    } else {
+      json[r'sustainity'] = null;
+    }
+    if (this.tco != null) {
+      json[r'tco'] = this.tco;
+    } else {
+      json[r'tco'] = null;
+    }
     return json;
   }
 
@@ -85,11 +135,12 @@ class Medallion {
       }());
 
       return Medallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
-        id: mapValueOfType<String>(json, r'id')!,
-        matchAccuracy: mapValueOfType<double>(json, r'matchAccuracy')!,
-        score: SustainityScore.fromJson(json[r'score'])!,
-        brandName: mapValueOfType<String>(json, r'brandName')!,
+        variant: MedallionVariant.fromJson(json[r'variant'])!,
+        bcorp: BCorpMedallion.fromJson(json[r'bcorp']),
+        euEcolabel: EuEcolabelMedallion.fromJson(json[r'euEcolabel']),
+        fti: FtiMedallion.fromJson(json[r'fti']),
+        sustainity: SustainityMedallion.fromJson(json[r'sustainity']),
+        tco: TcoMedallion.fromJson(json[r'tco']),
       );
     }
     return null;
@@ -137,11 +188,7 @@ class Medallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
-    'id',
-    'matchAccuracy',
-    'score',
-    'brandName',
+    'variant',
   };
 }
 

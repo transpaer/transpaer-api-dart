@@ -16,11 +16,6 @@ void main() {
   // final instance = BCorpMedallion();
 
   group('test BCorpMedallion', () {
-    // String medallionVariant
-    test('to test the property `medallionVariant`', () async {
-      // TODO
-    });
-
     // ID of a resource.
     // String id
     test('to test the property `id`', () async {

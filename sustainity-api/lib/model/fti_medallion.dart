@@ -13,31 +13,25 @@ part of openapi.api;
 class FtiMedallion {
   /// Returns a new [FtiMedallion] instance.
   FtiMedallion({
-    required this.medallionVariant,
     required this.score,
   });
-
-  String medallionVariant;
 
   int score;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is FtiMedallion &&
-    other.medallionVariant == medallionVariant &&
     other.score == score;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
     (score.hashCode);
 
   @override
-  String toString() => 'FtiMedallion[medallionVariant=$medallionVariant, score=$score]';
+  String toString() => 'FtiMedallion[score=$score]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
       json[r'score'] = this.score;
     return json;
   }
@@ -61,7 +55,6 @@ class FtiMedallion {
       }());
 
       return FtiMedallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
         score: mapValueOfType<int>(json, r'score')!,
       );
     }
@@ -110,7 +103,6 @@ class FtiMedallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
     'score',
   };
 }

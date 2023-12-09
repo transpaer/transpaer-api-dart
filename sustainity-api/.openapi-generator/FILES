@@ -17,6 +17,7 @@ doc/LibraryItemShort.md
 doc/LibraryTopic.md
 doc/LongText.md
 doc/Medallion.md
+doc/MedallionVariant.md
 doc/OrganisationFull.md
 doc/OrganisationShort.md
 doc/Presentation.md
@@ -28,6 +29,7 @@ doc/ShortText.md
 doc/SustainityMedallion.md
 doc/SustainityScore.md
 doc/SustainityScoreBranch.md
+doc/SustainityScoreCategory.md
 doc/TcoMedallion.md
 doc/TextSearchResult.md
 doc/TextSearchResultVariant.md
@@ -56,6 +58,7 @@ lib/model/library_item_short.dart
 lib/model/library_topic.dart
 lib/model/long_text.dart
 lib/model/medallion.dart
+lib/model/medallion_variant.dart
 lib/model/organisation_full.dart
 lib/model/organisation_short.dart
 lib/model/presentation.dart
@@ -67,6 +70,7 @@ lib/model/short_text.dart
 lib/model/sustainity_medallion.dart
 lib/model/sustainity_score.dart
 lib/model/sustainity_score_branch.dart
+lib/model/sustainity_score_category.dart
 lib/model/tco_medallion.dart
 lib/model/text_search_result.dart
 lib/model/text_search_result_variant.dart
@@ -86,6 +90,7 @@ test/library_item_short_test.dart
 test/library_topic_test.dart
 test/long_text_test.dart
 test/medallion_test.dart
+test/medallion_variant_test.dart
 test/organisation_full_test.dart
 test/organisation_short_test.dart
 test/presentation_entry_test.dart
@@ -96,6 +101,7 @@ test/scorer_name_test.dart
 test/short_text_test.dart
 test/sustainity_medallion_test.dart
 test/sustainity_score_branch_test.dart
+test/sustainity_score_category_test.dart
 test/sustainity_score_test.dart
 test/tco_medallion_test.dart
 test/text_search_result_test.dart
