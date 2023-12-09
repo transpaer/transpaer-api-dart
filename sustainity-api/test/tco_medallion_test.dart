@@ -16,11 +16,6 @@ void main() {
   // final instance = TcoMedallion();
 
   group('test TcoMedallion', () {
-    // String medallionVariant
-    test('to test the property `medallionVariant`', () async {
-      // TODO
-    });
-
     // Short string for labels, titles, summaries...
     // String brandName
     test('to test the property `brandName`', () async {

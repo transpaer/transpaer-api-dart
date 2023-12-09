@@ -13,24 +13,13 @@ part of openapi.api;
 class SustainityScoreBranch {
   /// Returns a new [SustainityScoreBranch] instance.
   SustainityScoreBranch({
-    required this.symbol,
-    this.description,
+    required this.category,
     required this.weight,
     required this.score,
     this.branches = const [],
   });
 
-  /// A single letter symbol.
-  String symbol;
-
-  /// Short string for labels, titles, summaries...
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? description;
+  SustainityScoreCategory category;
 
   int weight;
 
@@ -40,8 +29,7 @@ class SustainityScoreBranch {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SustainityScoreBranch &&
-    other.symbol == symbol &&
-    other.description == description &&
+    other.category == category &&
     other.weight == weight &&
     other.score == score &&
     _deepEquality.equals(other.branches, branches);
@@ -49,23 +37,17 @@ class SustainityScoreBranch {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (symbol.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
+    (category.hashCode) +
     (weight.hashCode) +
     (score.hashCode) +
     (branches.hashCode);
 
   @override
-  String toString() => 'SustainityScoreBranch[symbol=$symbol, description=$description, weight=$weight, score=$score, branches=$branches]';
+  String toString() => 'SustainityScoreBranch[category=$category, weight=$weight, score=$score, branches=$branches]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'symbol'] = this.symbol;
-    if (this.description != null) {
-      json[r'description'] = this.description;
-    } else {
-      json[r'description'] = null;
-    }
+      json[r'category'] = this.category;
       json[r'weight'] = this.weight;
       json[r'score'] = this.score;
       json[r'branches'] = this.branches;
@@ -91,8 +73,7 @@ class SustainityScoreBranch {
       }());
 
       return SustainityScoreBranch(
-        symbol: mapValueOfType<String>(json, r'symbol')!,
-        description: mapValueOfType<String>(json, r'description'),
+        category: SustainityScoreCategory.fromJson(json[r'category'])!,
         weight: mapValueOfType<int>(json, r'weight')!,
         score: mapValueOfType<double>(json, r'score')!,
         branches: SustainityScoreBranch.listFromJson(json[r'branches']),
@@ -143,9 +124,10 @@ class SustainityScoreBranch {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'symbol',
+    'category',
     'weight',
     'score',
+    'branches',
   };
 }
 

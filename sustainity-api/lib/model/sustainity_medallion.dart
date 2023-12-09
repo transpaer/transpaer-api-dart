@@ -13,31 +13,25 @@ part of openapi.api;
 class SustainityMedallion {
   /// Returns a new [SustainityMedallion] instance.
   SustainityMedallion({
-    required this.medallionVariant,
     required this.score,
   });
-
-  String medallionVariant;
 
   SustainityScore score;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SustainityMedallion &&
-    other.medallionVariant == medallionVariant &&
     other.score == score;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (medallionVariant.hashCode) +
     (score.hashCode);
 
   @override
-  String toString() => 'SustainityMedallion[medallionVariant=$medallionVariant, score=$score]';
+  String toString() => 'SustainityMedallion[score=$score]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'medallionVariant'] = this.medallionVariant;
       json[r'score'] = this.score;
     return json;
   }
@@ -61,7 +55,6 @@ class SustainityMedallion {
       }());
 
       return SustainityMedallion(
-        medallionVariant: mapValueOfType<String>(json, r'medallionVariant')!,
         score: SustainityScore.fromJson(json[r'score'])!,
       );
     }
@@ -110,7 +103,6 @@ class SustainityMedallion {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'medallionVariant',
     'score',
   };
 }

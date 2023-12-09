@@ -57,7 +57,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAlternatives**
-> List<CategoryAlternatives> getAlternatives(id)
+> List<CategoryAlternatives> getAlternatives(id, region)
 
 Get product alternatives.
 
@@ -69,9 +69,10 @@ import 'package:sustainity_api/api.dart';
 
 final api_instance = DefaultApi();
 final id = id_example; // String | ID of a resource.
+final region = region_example; // String | Region code.
 
 try {
-    final result = api_instance.getAlternatives(id);
+    final result = api_instance.getAlternatives(id, region);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getAlternatives: $e\n');
@@ -83,6 +84,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| ID of a resource. | 
+ **region** | **String**| Region code. | [optional] 
 
 ### Return type
 

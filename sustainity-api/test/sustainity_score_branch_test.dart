@@ -16,15 +16,8 @@ void main() {
   // final instance = SustainityScoreBranch();
 
   group('test SustainityScoreBranch', () {
-    // A single letter symbol.
-    // String symbol
-    test('to test the property `symbol`', () async {
-      // TODO
-    });
-
-    // Short string for labels, titles, summaries...
-    // String description
-    test('to test the property `description`', () async {
+    // SustainityScoreCategory category
+    test('to test the property `category`', () async {
       // TODO
     });
 

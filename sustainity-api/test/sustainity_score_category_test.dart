@@ -11,17 +11,10 @@
 import 'package:sustainity_api/api.dart';
 import 'package:test/test.dart';
 
-// tests for EuEcolabelMedallion
+// tests for SustainityScoreCategory
 void main() {
-  // final instance = EuEcolabelMedallion();
 
-  group('test EuEcolabelMedallion', () {
-    // Match accuracy.
-    // double matchAccuracy
-    test('to test the property `matchAccuracy`', () async {
-      // TODO
-    });
-
+  group('test SustainityScoreCategory', () {
 
   });
 

@@ -16,11 +16,6 @@ void main() {
   // final instance = SustainityMedallion();
 
   group('test SustainityMedallion', () {
-    // String medallionVariant
-    test('to test the property `medallionVariant`', () async {
-      // TODO
-    });
-
     // SustainityScore score
     test('to test the property `score`', () async {
       // TODO
