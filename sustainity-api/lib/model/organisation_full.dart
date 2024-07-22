@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,7 +13,7 @@ part of openapi.api;
 class OrganisationFull {
   /// Returns a new [OrganisationFull] instance.
   OrganisationFull({
-    required this.organisationId,
+    required this.organisationIds,
     this.names = const [],
     this.descriptions = const [],
     this.images = const [],
@@ -22,8 +22,7 @@ class OrganisationFull {
     this.medallions = const [],
   });
 
-  /// ID of a resource.
-  String organisationId;
+  OrganisationIds organisationIds;
 
   List<ShortText> names;
 
@@ -39,7 +38,7 @@ class OrganisationFull {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrganisationFull &&
-    other.organisationId == organisationId &&
+    other.organisationIds == organisationIds &&
     _deepEquality.equals(other.names, names) &&
     _deepEquality.equals(other.descriptions, descriptions) &&
     _deepEquality.equals(other.images, images) &&
@@ -50,7 +49,7 @@ class OrganisationFull {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (organisationId.hashCode) +
+    (organisationIds.hashCode) +
     (names.hashCode) +
     (descriptions.hashCode) +
     (images.hashCode) +
@@ -59,11 +58,11 @@ class OrganisationFull {
     (medallions.hashCode);
 
   @override
-  String toString() => 'OrganisationFull[organisationId=$organisationId, names=$names, descriptions=$descriptions, images=$images, websites=$websites, products=$products, medallions=$medallions]';
+  String toString() => 'OrganisationFull[organisationIds=$organisationIds, names=$names, descriptions=$descriptions, images=$images, websites=$websites, products=$products, medallions=$medallions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'organisationId'] = this.organisationId;
+      json[r'organisationIds'] = this.organisationIds;
       json[r'names'] = this.names;
       json[r'descriptions'] = this.descriptions;
       json[r'images'] = this.images;
@@ -92,7 +91,7 @@ class OrganisationFull {
       }());
 
       return OrganisationFull(
-        organisationId: mapValueOfType<String>(json, r'organisationId')!,
+        organisationIds: OrganisationIds.fromJson(json[r'organisationIds'])!,
         names: ShortText.listFromJson(json[r'names']),
         descriptions: LongText.listFromJson(json[r'descriptions']),
         images: Image.listFromJson(json[r'images']),
@@ -148,7 +147,9 @@ class OrganisationFull {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'organisationId',
+    'organisationIds',
+    'names',
+    'descriptions',
     'images',
     'websites',
     'products',

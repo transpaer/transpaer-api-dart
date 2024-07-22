@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,15 +13,14 @@ part of openapi.api;
 class OrganisationShort {
   /// Returns a new [OrganisationShort] instance.
   OrganisationShort({
-    required this.organisationId,
+    required this.organisationIds,
     required this.name,
     this.description,
     this.badges = const [],
-    this.scores = const {},
+    this.scores = const [],
   });
 
-  /// ID of a resource.
-  String organisationId;
+  OrganisationIds organisationIds;
 
   /// Short string for labels, titles, summaries...
   String name;
@@ -37,11 +36,11 @@ class OrganisationShort {
 
   List<BadgeName> badges;
 
-  Map<String, int> scores;
+  List<Score> scores;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrganisationShort &&
-    other.organisationId == organisationId &&
+    other.organisationIds == organisationIds &&
     other.name == name &&
     other.description == description &&
     _deepEquality.equals(other.badges, badges) &&
@@ -50,18 +49,18 @@ class OrganisationShort {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (organisationId.hashCode) +
+    (organisationIds.hashCode) +
     (name.hashCode) +
     (description == null ? 0 : description!.hashCode) +
     (badges.hashCode) +
     (scores.hashCode);
 
   @override
-  String toString() => 'OrganisationShort[organisationId=$organisationId, name=$name, description=$description, badges=$badges, scores=$scores]';
+  String toString() => 'OrganisationShort[organisationIds=$organisationIds, name=$name, description=$description, badges=$badges, scores=$scores]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'organisationId'] = this.organisationId;
+      json[r'organisationIds'] = this.organisationIds;
       json[r'name'] = this.name;
     if (this.description != null) {
       json[r'description'] = this.description;
@@ -92,11 +91,11 @@ class OrganisationShort {
       }());
 
       return OrganisationShort(
-        organisationId: mapValueOfType<String>(json, r'organisationId')!,
+        organisationIds: OrganisationIds.fromJson(json[r'organisationIds'])!,
         name: mapValueOfType<String>(json, r'name')!,
         description: mapValueOfType<String>(json, r'description'),
         badges: BadgeName.listFromJson(json[r'badges']),
-        scores: mapCastOfType<String, int>(json, r'scores')!,
+        scores: Score.listFromJson(json[r'scores']),
       );
     }
     return null;
@@ -144,7 +143,7 @@ class OrganisationShort {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'organisationId',
+    'organisationIds',
     'name',
     'badges',
     'scores',

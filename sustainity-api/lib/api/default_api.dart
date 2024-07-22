@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -243,11 +243,15 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [OrganisationIdVariant] organisationIdVariant (required):
+  ///   Variant of an organisation ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
-  Future<Response> getOrganisationWithHttpInfo(String id,) async {
+  Future<Response> getOrganisationWithHttpInfo(OrganisationIdVariant organisationIdVariant, String id,) async {
     // ignore: prefer_const_declarations
-    final path = r'/organisation/{id}'
+    final path = r'/organisation/{organisationIdVariant}:{id}'
+      .replaceAll('{organisationIdVariant}', organisationIdVariant.toString())
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
@@ -277,10 +281,13 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [OrganisationIdVariant] organisationIdVariant (required):
+  ///   Variant of an organisation ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
-  Future<OrganisationFull?> getOrganisation(String id,) async {
-    final response = await getOrganisationWithHttpInfo(id,);
+  Future<OrganisationFull?> getOrganisation(OrganisationIdVariant organisationIdVariant, String id,) async {
+    final response = await getOrganisationWithHttpInfo(organisationIdVariant, id,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -302,14 +309,18 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [ProductIdVariant] productIdVariant (required):
+  ///   Variant of a product ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
   ///
   /// * [String] region:
   ///   Region code.
-  Future<Response> getProductWithHttpInfo(String id, { String? region, }) async {
+  Future<Response> getProductWithHttpInfo(ProductIdVariant productIdVariant, String id, { String? region, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/product/{id}'
+    final path = r'/product/{productIdVariant}:{id}'
+      .replaceAll('{productIdVariant}', productIdVariant.toString())
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
@@ -343,13 +354,16 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [ProductIdVariant] productIdVariant (required):
+  ///   Variant of a product ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
   ///
   /// * [String] region:
   ///   Region code.
-  Future<ProductFull?> getProduct(String id, { String? region, }) async {
-    final response = await getProductWithHttpInfo(id,  region: region, );
+  Future<ProductFull?> getProduct(ProductIdVariant productIdVariant, String id, { String? region, }) async {
+    final response = await getProductWithHttpInfo(productIdVariant, id,  region: region, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

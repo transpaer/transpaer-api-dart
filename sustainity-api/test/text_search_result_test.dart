@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -16,14 +16,8 @@ void main() {
   // final instance = TextSearchResult();
 
   group('test TextSearchResult', () {
-    // TextSearchResultVariant variant
-    test('to test the property `variant`', () async {
-      // TODO
-    });
-
-    // ID of a resource.
-    // String id
-    test('to test the property `id`', () async {
+    // TextSearchLinkHack link
+    test('to test the property `link`', () async {
       // TODO
     });
 

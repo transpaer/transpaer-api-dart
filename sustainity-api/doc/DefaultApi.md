@@ -13,8 +13,8 @@ Method | HTTP request | Description
 [**getAlternatives**](DefaultApi.md#getalternatives) | **GET** /product/{id}/alternatives | Get product alternatives.
 [**getLibrary**](DefaultApi.md#getlibrary) | **GET** /library | Get library contents.
 [**getLibraryItem**](DefaultApi.md#getlibraryitem) | **GET** /library/{topic} | Get library item.
-[**getOrganisation**](DefaultApi.md#getorganisation) | **GET** /organisation/{id} | Get organisation.
-[**getProduct**](DefaultApi.md#getproduct) | **GET** /product/{id} | Get product.
+[**getOrganisation**](DefaultApi.md#getorganisation) | **GET** /organisation/{organisationIdVariant}:{id} | Get organisation.
+[**getProduct**](DefaultApi.md#getproduct) | **GET** /product/{productIdVariant}:{id} | Get product.
 [**searchByText**](DefaultApi.md#searchbytext) | **GET** /search/text | Text search.
 
 
@@ -184,7 +184,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOrganisation**
-> OrganisationFull getOrganisation(id)
+> OrganisationFull getOrganisation(organisationIdVariant, id)
 
 Get organisation.
 
@@ -195,10 +195,11 @@ Returns full info about a specified organisation.
 import 'package:sustainity_api/api.dart';
 
 final api_instance = DefaultApi();
+final organisationIdVariant = ; // OrganisationIdVariant | Variant of an organisation ID.
 final id = id_example; // String | ID of a resource.
 
 try {
-    final result = api_instance.getOrganisation(id);
+    final result = api_instance.getOrganisation(organisationIdVariant, id);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getOrganisation: $e\n');
@@ -209,6 +210,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationIdVariant** | [**OrganisationIdVariant**](.md)| Variant of an organisation ID. | 
  **id** | **String**| ID of a resource. | 
 
 ### Return type
@@ -227,7 +229,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getProduct**
-> ProductFull getProduct(id, region)
+> ProductFull getProduct(productIdVariant, id, region)
 
 Get product.
 
@@ -238,11 +240,12 @@ Returns full info about a specified product.
 import 'package:sustainity_api/api.dart';
 
 final api_instance = DefaultApi();
+final productIdVariant = ; // ProductIdVariant | Variant of a product ID.
 final id = id_example; // String | ID of a resource.
 final region = region_example; // String | Region code.
 
 try {
-    final result = api_instance.getProduct(id, region);
+    final result = api_instance.getProduct(productIdVariant, id, region);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getProduct: $e\n');
@@ -253,6 +256,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **productIdVariant** | [**ProductIdVariant**](.md)| Variant of a product ID. | 
  **id** | **String**| ID of a resource. | 
  **region** | **String**| Region code. | [optional] 
 

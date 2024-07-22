@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,8 +13,7 @@ part of openapi.api;
 class ProductFull {
   /// Returns a new [ProductFull] instance.
   ProductFull({
-    required this.productId,
-    this.gtins = const [],
+    required this.productIds,
     this.names = const [],
     this.descriptions = const [],
     this.images = const [],
@@ -23,10 +22,7 @@ class ProductFull {
     this.medallions = const [],
   });
 
-  /// ID of a resource.
-  String productId;
-
-  List<String> gtins;
+  ProductIds productIds;
 
   List<ShortText> names;
 
@@ -42,8 +38,7 @@ class ProductFull {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductFull &&
-    other.productId == productId &&
-    _deepEquality.equals(other.gtins, gtins) &&
+    other.productIds == productIds &&
     _deepEquality.equals(other.names, names) &&
     _deepEquality.equals(other.descriptions, descriptions) &&
     _deepEquality.equals(other.images, images) &&
@@ -54,8 +49,7 @@ class ProductFull {
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (productId.hashCode) +
-    (gtins.hashCode) +
+    (productIds.hashCode) +
     (names.hashCode) +
     (descriptions.hashCode) +
     (images.hashCode) +
@@ -64,12 +58,11 @@ class ProductFull {
     (medallions.hashCode);
 
   @override
-  String toString() => 'ProductFull[productId=$productId, gtins=$gtins, names=$names, descriptions=$descriptions, images=$images, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions]';
+  String toString() => 'ProductFull[productIds=$productIds, names=$names, descriptions=$descriptions, images=$images, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'productId'] = this.productId;
-      json[r'gtins'] = this.gtins;
+      json[r'productIds'] = this.productIds;
       json[r'names'] = this.names;
       json[r'descriptions'] = this.descriptions;
       json[r'images'] = this.images;
@@ -98,10 +91,7 @@ class ProductFull {
       }());
 
       return ProductFull(
-        productId: mapValueOfType<String>(json, r'productId')!,
-        gtins: json[r'gtins'] is Iterable
-            ? (json[r'gtins'] as Iterable).cast<String>().toList(growable: false)
-            : const [],
+        productIds: ProductIds.fromJson(json[r'productIds'])!,
         names: ShortText.listFromJson(json[r'names']),
         descriptions: LongText.listFromJson(json[r'descriptions']),
         images: Image.listFromJson(json[r'images']),
@@ -155,7 +145,9 @@ class ProductFull {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'productId',
+    'productIds',
+    'names',
+    'descriptions',
     'images',
     'manufacturers',
     'alternatives',

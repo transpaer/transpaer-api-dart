@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -212,6 +212,10 @@ class ApiClient {
           return MedallionVariantTypeTransformer().decode(value);
         case 'OrganisationFull':
           return OrganisationFull.fromJson(value);
+        case 'OrganisationIdVariant':
+          return OrganisationIdVariantTypeTransformer().decode(value);
+        case 'OrganisationIds':
+          return OrganisationIds.fromJson(value);
         case 'OrganisationShort':
           return OrganisationShort.fromJson(value);
         case 'Presentation':
@@ -220,8 +224,14 @@ class ApiClient {
           return PresentationEntry.fromJson(value);
         case 'ProductFull':
           return ProductFull.fromJson(value);
+        case 'ProductIdVariant':
+          return ProductIdVariantTypeTransformer().decode(value);
+        case 'ProductIds':
+          return ProductIds.fromJson(value);
         case 'ProductShort':
           return ProductShort.fromJson(value);
+        case 'Score':
+          return Score.fromJson(value);
         case 'ScorerName':
           return ScorerNameTypeTransformer().decode(value);
         case 'ShortText':
@@ -236,10 +246,10 @@ class ApiClient {
           return SustainityScoreCategoryTypeTransformer().decode(value);
         case 'TcoMedallion':
           return TcoMedallion.fromJson(value);
+        case 'TextSearchLinkHack':
+          return TextSearchLinkHack.fromJson(value);
         case 'TextSearchResult':
           return TextSearchResult.fromJson(value);
-        case 'TextSearchResultVariant':
-          return TextSearchResultVariantTypeTransformer().decode(value);
         case 'TextSearchResults':
           return TextSearchResults.fromJson(value);
         default:

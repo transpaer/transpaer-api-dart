@@ -1,4 +1,4 @@
-# sustainity_api.model.TextSearchResultVariant
+# sustainity_api.model.ProductIdVariant
 
 ## Load the model package
 ```dart

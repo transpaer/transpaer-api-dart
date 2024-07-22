@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -67,14 +67,17 @@ String parameterToString(dynamic value) {
   if (value is MedallionVariant) {
     return MedallionVariantTypeTransformer().encode(value).toString();
   }
+  if (value is OrganisationIdVariant) {
+    return OrganisationIdVariantTypeTransformer().encode(value).toString();
+  }
+  if (value is ProductIdVariant) {
+    return ProductIdVariantTypeTransformer().encode(value).toString();
+  }
   if (value is ScorerName) {
     return ScorerNameTypeTransformer().encode(value).toString();
   }
   if (value is SustainityScoreCategory) {
     return SustainityScoreCategoryTypeTransformer().encode(value).toString();
-  }
-  if (value is TextSearchResultVariant) {
-    return TextSearchResultVariantTypeTransformer().encode(value).toString();
   }
   return value.toString();
 }
