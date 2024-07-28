@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -26,12 +26,20 @@ class DataSource {
   static const wiki = DataSource._(r'wiki');
   static const off = DataSource._(r'off');
   static const eu = DataSource._(r'eu');
+  static const bCorp = DataSource._(r'b_corp');
+  static const fti = DataSource._(r'fti');
+  static const tco = DataSource._(r'tco');
+  static const other = DataSource._(r'other');
 
   /// List of all possible values in this [enum][DataSource].
   static const values = <DataSource>[
     wiki,
     off,
     eu,
+    bCorp,
+    fti,
+    tco,
+    other,
   ];
 
   static DataSource? fromJson(dynamic value) => DataSourceTypeTransformer().decode(value);
@@ -73,6 +81,10 @@ class DataSourceTypeTransformer {
         case r'wiki': return DataSource.wiki;
         case r'off': return DataSource.off;
         case r'eu': return DataSource.eu;
+        case r'b_corp': return DataSource.bCorp;
+        case r'fti': return DataSource.fti;
+        case r'tco': return DataSource.tco;
+        case r'other': return DataSource.other;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

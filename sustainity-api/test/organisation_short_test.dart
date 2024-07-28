@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -16,9 +16,8 @@ void main() {
   // final instance = OrganisationShort();
 
   group('test OrganisationShort', () {
-    // ID of a resource.
-    // String organisationId
-    test('to test the property `organisationId`', () async {
+    // OrganisationIds organisationIds
+    test('to test the property `organisationIds`', () async {
       // TODO
     });
 
@@ -39,7 +38,7 @@ void main() {
       // TODO
     });
 
-    // Map<String, int> scores (default value: const {})
+    // List<Score> scores (default value: const [])
     test('to test the property `scores`', () async {
       // TODO
     });

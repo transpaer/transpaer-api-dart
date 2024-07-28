@@ -8,11 +8,11 @@ import 'package:sustainity_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**productId** | **String** | ID of a resource. | 
+**productIds** | [**ProductIds**](ProductIds.md) |  | 
 **name** | **String** | Short string for labels, titles, summaries... | 
 **description** | **String** | Long string for descriptions, articles... | [optional] 
 **badges** | [**List<BadgeName>**](BadgeName.md) |  | [default to const []]
-**scores** | **Map<String, int>** |  | [default to const {}]
+**scores** | [**List<Score>**](Score.md) |  | [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

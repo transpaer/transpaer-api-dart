@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,13 +13,13 @@ part of openapi.api;
 class PresentationEntry {
   /// Returns a new [PresentationEntry] instance.
   PresentationEntry({
-    required this.id,
+    required this.wikiId,
     required this.name,
     required this.score,
   });
 
   /// ID of a resource.
-  String id;
+  String wikiId;
 
   /// Short string for labels, titles, summaries...
   String name;
@@ -28,23 +28,23 @@ class PresentationEntry {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is PresentationEntry &&
-    other.id == id &&
+    other.wikiId == wikiId &&
     other.name == name &&
     other.score == score;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id.hashCode) +
+    (wikiId.hashCode) +
     (name.hashCode) +
     (score.hashCode);
 
   @override
-  String toString() => 'PresentationEntry[id=$id, name=$name, score=$score]';
+  String toString() => 'PresentationEntry[wikiId=$wikiId, name=$name, score=$score]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'id'] = this.id;
+      json[r'wiki_id'] = this.wikiId;
       json[r'name'] = this.name;
       json[r'score'] = this.score;
     return json;
@@ -69,7 +69,7 @@ class PresentationEntry {
       }());
 
       return PresentationEntry(
-        id: mapValueOfType<String>(json, r'id')!,
+        wikiId: mapValueOfType<String>(json, r'wiki_id')!,
         name: mapValueOfType<String>(json, r'name')!,
         score: mapValueOfType<int>(json, r'score')!,
       );
@@ -119,7 +119,7 @@ class PresentationEntry {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'id',
+    'wiki_id',
     'name',
     'score',
   };

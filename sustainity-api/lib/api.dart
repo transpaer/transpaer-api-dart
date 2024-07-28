@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -45,11 +45,16 @@ part 'model/long_text.dart';
 part 'model/medallion.dart';
 part 'model/medallion_variant.dart';
 part 'model/organisation_full.dart';
+part 'model/organisation_id_variant.dart';
+part 'model/organisation_ids.dart';
 part 'model/organisation_short.dart';
 part 'model/presentation.dart';
 part 'model/presentation_entry.dart';
 part 'model/product_full.dart';
+part 'model/product_id_variant.dart';
+part 'model/product_ids.dart';
 part 'model/product_short.dart';
+part 'model/score.dart';
 part 'model/scorer_name.dart';
 part 'model/short_text.dart';
 part 'model/sustainity_medallion.dart';
@@ -57,8 +62,8 @@ part 'model/sustainity_score.dart';
 part 'model/sustainity_score_branch.dart';
 part 'model/sustainity_score_category.dart';
 part 'model/tco_medallion.dart';
+part 'model/text_search_link_hack.dart';
 part 'model/text_search_result.dart';
-part 'model/text_search_result_variant.dart';
 part 'model/text_search_results.dart';
 
 

@@ -7,7 +7,7 @@ scripts:
   packages:
     exec: dart pub get
 
-  analyze:
+  check:
     exec: dart pub get && dart analyze
 
   test:

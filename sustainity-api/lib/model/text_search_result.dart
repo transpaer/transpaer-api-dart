@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -13,39 +13,32 @@ part of openapi.api;
 class TextSearchResult {
   /// Returns a new [TextSearchResult] instance.
   TextSearchResult({
-    required this.variant,
-    required this.id,
+    required this.link,
     required this.label,
   });
 
-  TextSearchResultVariant variant;
-
-  /// ID of a resource.
-  String id;
+  TextSearchLinkHack link;
 
   /// Short string for labels, titles, summaries...
   String label;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is TextSearchResult &&
-    other.variant == variant &&
-    other.id == id &&
+    other.link == link &&
     other.label == label;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (variant.hashCode) +
-    (id.hashCode) +
+    (link.hashCode) +
     (label.hashCode);
 
   @override
-  String toString() => 'TextSearchResult[variant=$variant, id=$id, label=$label]';
+  String toString() => 'TextSearchResult[link=$link, label=$label]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'variant'] = this.variant;
-      json[r'id'] = this.id;
+      json[r'link'] = this.link;
       json[r'label'] = this.label;
     return json;
   }
@@ -69,8 +62,7 @@ class TextSearchResult {
       }());
 
       return TextSearchResult(
-        variant: TextSearchResultVariant.fromJson(json[r'variant'])!,
-        id: mapValueOfType<String>(json, r'id')!,
+        link: TextSearchLinkHack.fromJson(json[r'link'])!,
         label: mapValueOfType<String>(json, r'label')!,
       );
     }
@@ -119,8 +111,7 @@ class TextSearchResult {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'variant',
-    'id',
+    'link',
     'label',
   };
 }

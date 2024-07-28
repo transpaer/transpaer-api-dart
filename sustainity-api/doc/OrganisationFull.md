@@ -8,9 +8,9 @@ import 'package:sustainity_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organisationId** | **String** | ID of a resource. | 
-**names** | [**List<ShortText>**](ShortText.md) |  | [optional] [default to const []]
-**descriptions** | [**List<LongText>**](LongText.md) |  | [optional] [default to const []]
+**organisationIds** | [**OrganisationIds**](OrganisationIds.md) |  | 
+**names** | [**List<ShortText>**](ShortText.md) |  | [default to const []]
+**descriptions** | [**List<LongText>**](LongText.md) |  | [default to const []]
 **images** | [**List<Image>**](Image.md) |  | [default to const []]
 **websites** | **List<String>** |  | [default to const []]
 **products** | [**List<ProductShort>**](ProductShort.md) |  | [default to const []]

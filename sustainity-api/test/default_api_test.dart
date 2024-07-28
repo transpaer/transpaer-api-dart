@@ -1,7 +1,7 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.12
+// @dart=2.18
 
 // ignore_for_file: unused_element, unused_import
 // ignore_for_file: always_put_required_named_parameters_first
@@ -57,7 +57,7 @@ void main() {
     //
     // Returns full info about a specified organisation.
     //
-    //Future<OrganisationFull> getOrganisation(String id) async
+    //Future<OrganisationFull> getOrganisation(OrganisationIdVariant organisationIdVariant, String id) async
     test('test getOrganisation', () async {
       // TODO
     });
@@ -66,7 +66,7 @@ void main() {
     //
     // Returns full info about a specified product.
     //
-    //Future<ProductFull> getProduct(String id, { String region }) async
+    //Future<ProductFull> getProduct(ProductIdVariant productIdVariant, String id, { String region }) async
     test('test getProduct', () async {
       // TODO
     });

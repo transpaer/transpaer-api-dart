@@ -1,0 +1,558 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+
+$defs:
+
+  id:
+    description: ID of a resource.
+    type: string
+    maxLength: 32
+
+  organisationIds:
+    description: IDs of an organisation.
+    type: object
+    properties:
+      wiki:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+      vat:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+      domains:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+
+  organisationIdVariant:
+    description: Enumerates organisation ID variants.
+    type: string
+    enum: ["wiki", "vat", "www"]
+
+  productIds:
+    description: IDs of a product.
+    type: object
+    properties:
+      eans:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+      gtins:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+      wiki:
+        type: array
+        items:
+          $ref: "#/$defs/id"
+
+  productIdVariant:
+    description: Enumerates product ID variants.
+    type: string
+    enum: ["ean", "gtin", "wiki"]
+
+  organisationLink:
+    type: object
+    properties:
+      organisation_id_variant:
+        $ref: '#/$defs/organisationIdVariant'
+      id:
+        $ref: '#/$defs/id'
+    required:
+      - organisation_id_variant
+      - id
+          
+  productLink:
+    type: object
+    properties:
+      product_id_variant:
+        $ref: '#/$defs/productIdVariant'
+      id:
+        $ref: '#/$defs/id'
+    required:
+      - product_id_variant
+      - id
+
+  accuracy:
+    description: Match accuracy.
+    type: number
+    format: double
+    minimum: 0.0
+    maximum: 1.0
+
+  dataSource:
+    description: Describes where the related data was retrieved from.
+    type: string
+    enum: ["wiki", "off", "eu", "b_corp", "fti", "tco", "other"]
+
+  regionCode:
+    description: Code of a region.
+    type: string
+    minLength: 2
+    maxLength: 2
+
+  shortString:
+    description: Short string for labels, titles, summaries...
+    type: string
+    maxLength: 1024
+
+  longString:
+    description: Long string for descriptions, articles...
+    type: string
+    maxLength: 1048576
+
+  shortText:
+    description: Short text with its source.
+    type: object
+    properties:
+      text:
+        $ref: "#/$defs/shortString"
+      source:
+        $ref: "#/$defs/dataSource"
+    required:
+      - text
+      - source
+
+  longText:
+    description: Long text with its source.
+    type: object
+    properties:
+      text:
+        $ref: "#/$defs/longString"
+      source:
+        $ref: "#/$defs/dataSource"
+    required:
+      - text
+      - source
+
+  image:
+    description: Image path/URL with its source.
+    type: object
+    properties:
+      image:
+        type: string
+      source:
+        $ref: "#/$defs/dataSource"
+    required:
+      - image
+      - source
+
+  presentationEntry:
+    description: An entry in a presentation.
+    type: object
+    properties:
+      wiki_id:
+        $ref: "#/$defs/id"
+      name:
+        $ref: "#/$defs/shortString"
+      score:
+        type: integer
+    required:
+      - wiki_id
+      - name
+      - score
+
+  presentation:
+    description: Additional data to present together with a library item.
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/$defs/presentationEntry"
+    required:
+      - data
+
+  libraryTopic:
+    description: Name of a topic in the library.
+    type: string
+    enum:
+      - info:main
+      - info:for_producers
+      - info:faq
+      - data:wiki
+      - data:open_food_facts
+      - cert:bcorp
+      - cert:eu_ecolabel
+      - cert:tco
+      - cert:fti
+      - other:not_found
+
+  libraryItemShort:
+    description: Short summary of a library item.
+    type: object
+    properties:
+      id:
+        $ref: "#/$defs/libraryTopic"
+      title:
+        $ref: "#/$defs/shortString"
+      summary:
+        $ref: "#/$defs/shortString"
+    required:
+      - id
+      - title
+      - summary
+
+  libraryItemFull:
+    description: Full contents of a library item.
+    type: object
+    properties:
+      id:
+        $ref: "#/$defs/libraryTopic"
+      title:
+        $ref: "#/$defs/shortString"
+      summary:
+        $ref: "#/$defs/shortString"
+      article:
+        $ref: "#/$defs/longString"
+      presentation:
+        $ref: "#/$defs/presentation"
+    required:
+      - id
+      - title
+      - summary
+      - article
+
+  libraryContents:
+    description: List of all items in the library.
+    type: object
+    properties:
+      items:
+        type: array
+        items:
+          $ref: "#/$defs/libraryItemShort"
+    required:
+      - items
+
+  sustainityScoreCategory:
+    description: Categories in the sustainity score
+    type: string
+    enum:
+      - dataAvailability
+      - producerKnown
+      - productionPlaceKnown
+      - idKnown
+      - categoryAssigned
+      - category
+      - warrantyLength
+      - numCerts
+      - atLeastOneCert
+      - atLeastTwoCerts
+
+  sustainityScoreBranch:
+    description: Part of explanation of calculation of the Sustainity score.
+    type: object
+    properties:
+      category:
+        $ref: "#/$defs/sustainityScoreCategory"
+      weight:
+        type: integer
+      score:
+        type: number
+        format: double
+      branches:
+        type: array
+        items:
+          $ref: "#/$defs/sustainityScoreBranch"
+    required:
+      - category
+      - weight
+      - score
+      - branches
+
+  sustainityScore:
+    description: Explanation of calculation of the Sustainity score.
+    type: object
+    properties:
+      total:
+        type: number
+        format: double
+      tree:
+        type: array
+        items:
+          $ref: "#/$defs/sustainityScoreBranch"
+    required:
+      - total
+      - tree
+
+  bCorpMedallion:
+    description: Details of BCorp evaluation.
+    type: object
+    properties:
+      id:
+        $ref: "#/$defs/id"
+    required:
+      - id
+
+  euEcolabelMedallion:
+    description: Details of EU Ecolabel evaluation.
+    type: object
+    properties:
+      matchAccuracy:
+        $ref: "#/$defs/accuracy"
+
+  ftiMedallion:
+    description: Details of Fashion Transparency Index evaluation.
+    type: object
+    properties:
+      score:
+        type: integer
+        format: int64
+    required:
+      - score
+
+  sustainityMedallion:
+    description: Details of Sustainity evaluation.
+    type: object
+    properties:
+      score:
+        $ref: "#/$defs/sustainityScore"
+    required:
+      - score
+
+  tcoMedallion:
+    description: Details of TCO evaluation.
+    type: object
+    properties:
+      brandName:
+        $ref: "#/$defs/shortString"
+    required:
+      - brandName
+
+  medallionVariant:
+    description: Medallion variant.
+    type: string
+    enum:
+      - bCorp
+      - euEcolabel
+      - fti
+      - sustainity
+      - tco
+
+  badgeName:
+    description: Name of a badge.
+    type: string
+    enum: ["bcorp", "eu", "tco"]
+
+  scorerName:
+    description: Name of a scorer.
+    type: string
+    enum: ["fti"]
+
+  score:
+    description: score.
+    type: object
+    properties:
+      scorerName:
+        $ref: "#/$defs/scorerName"
+      score:
+        type: integer
+        format: int64
+    required:
+      - scorerName
+      - score
+
+  medallion:
+    description: Combines data from any medallion.
+    type: object
+    properties:
+      variant:
+        $ref: "#/$defs/medallionVariant"
+      bcorp:
+        $ref: "#/$defs/bCorpMedallion"
+      euEcolabel:
+        $ref: "#/$defs/euEcolabelMedallion"
+      fti:
+        $ref: "#/$defs/ftiMedallion"
+      sustainity:
+        $ref: "#/$defs/sustainityMedallion"
+      tco:
+        $ref: "#/$defs/tcoMedallion"
+    required:
+      - variant
+
+  organisationShort:
+    description: Extract from organisation data.
+    type: object
+    properties:
+      organisationIds:
+        $ref: "#/$defs/organisationIds"
+      name:
+        $ref: "#/$defs/shortString"
+      description:
+        $ref: "#/$defs/longString"
+      badges:
+        type: array
+        items:
+          $ref: "#/$defs/badgeName"
+      scores:
+        type: array
+        items:
+          $ref: "#/$defs/score"
+    required:
+      - organisationIds
+      - name
+      - badges
+      - scores
+
+  organisationFull:
+    description: Full organisation data.
+    type: object
+    properties:
+      organisationIds:
+        $ref: "#/$defs/organisationIds"
+      names:
+        type: array
+        items:
+          $ref: "#/$defs/shortText"
+      descriptions:
+        type: array
+        items:
+          $ref: "#/$defs/longText"
+      images:
+        type: array
+        items:
+          $ref: "#/$defs/image"
+      websites:
+        type: array
+        items:
+          $ref: "#/$defs/shortString"
+      products:
+        type: array
+        items:
+          $ref: "#/$defs/productShort"
+      medallions:
+        type: array
+        items:
+          $ref: "#/$defs/medallion"
+    required:
+      - organisationIds
+      - names
+      - descriptions
+      - images
+      - websites
+      - products
+      - medallions
+
+  productShort:
+    description: Extract from product data.
+    type: object
+    properties:
+      productIds:
+        $ref: "#/$defs/productIds"
+      name:
+        $ref: "#/$defs/shortString"
+      description:
+        $ref: "#/$defs/longString"
+      badges:
+        type: array
+        items:
+          $ref: "#/$defs/badgeName"
+      scores:
+        type: array
+        items:
+          $ref: "#/$defs/score"
+    required:
+      - productIds
+      - name
+      - badges
+      - scores
+
+  productFull:
+    description: Full product data.
+    type: object
+    properties:
+      productIds:
+        $ref: "#/$defs/productIds"
+      names:
+        type: array
+        items:
+          $ref: "#/$defs/shortText"
+      descriptions:
+        type: array
+        items:
+          $ref: "#/$defs/longText"
+      images:
+        type: array
+        items:
+          $ref: "#/$defs/image"
+      manufacturers:
+        type: array
+        items:
+          $ref: "#/$defs/organisationShort"
+      alternatives:
+        type: array
+        items:
+          $ref: "#/$defs/categoryAlternatives"
+      medallions:
+        type: array
+        items:
+          $ref: "#/$defs/medallion"
+    required:
+      - productIds
+      - names
+      - descriptions
+      - images
+      - manufacturers
+      - alternatives
+      - medallions
+
+  categoryAlternatives:
+    description: List of product alternative in the given category.
+    type: object
+    properties:
+      category:
+        type: string
+      alternatives:
+        type: array
+        items:
+          $ref: "#/$defs/productShort"
+    required:
+      - category
+      - alternatives
+
+  textSearchLink:
+    description: Link to a text search result.
+    type: object
+    anyOf:
+      - $ref: '#/$defs/organisationLink'
+      - $ref: '#/$defs/productLink'
+  
+  # Ideally it should be defined like above, but openapi tools are broken
+  textSearchLinkHack:
+    description: Link to a text search result.
+    type: object
+    properties:
+      organisation_id_variant:
+        $ref: '#/$defs/organisationIdVariant'
+      product_id_variant:
+        $ref: '#/$defs/productIdVariant'
+      id:
+        $ref: '#/$defs/id'
+    required:
+      - id
+
+  textSearchResult:
+    description: An entry in text search results.
+    type: object
+    properties:
+      link:
+        $ref: "#/$defs/textSearchLinkHack"
+      label:
+        $ref: "#/$defs/shortString"
+    required:
+      - link
+      - label
+
+  textSearchResults:
+    description: List of results of a text search.
+    type: object
+    properties:
+      results:
+        type: array
+        items:
+          $ref: "#/$defs/textSearchResult"
+    required:
+      - results
+
+
