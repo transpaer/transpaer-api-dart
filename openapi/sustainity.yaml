@@ -164,8 +164,9 @@ paths:
             Access-Control-Allow-Headers:
               $ref: "#/components/headers/corsHeaders"
 
-  /product/{id}/alternatives:
+  /product/{productIdVariant}:{id}/alternatives:
     parameters:
+      - $ref: "#/components/parameters/productIdVariant"
       - $ref: "#/components/parameters/id"
       - $ref: "#/components/parameters/regionCode"
     get:

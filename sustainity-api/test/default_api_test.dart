@@ -30,7 +30,7 @@ void main() {
     //
     // Returns a list of alternative products for each of products category.
     //
-    //Future<List<CategoryAlternatives>> getAlternatives(String id, { String region }) async
+    //Future<List<CategoryAlternatives>> getAlternatives(ProductIdVariant productIdVariant, String id, { String region }) async
     test('test getAlternatives', () async {
       // TODO
     });

@@ -64,14 +64,18 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [ProductIdVariant] productIdVariant (required):
+  ///   Variant of a product ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
   ///
   /// * [String] region:
   ///   Region code.
-  Future<Response> getAlternativesWithHttpInfo(String id, { String? region, }) async {
+  Future<Response> getAlternativesWithHttpInfo(ProductIdVariant productIdVariant, String id, { String? region, }) async {
     // ignore: prefer_const_declarations
-    final path = r'/product/{id}/alternatives'
+    final path = r'/product/{productIdVariant}:{id}/alternatives'
+      .replaceAll('{productIdVariant}', productIdVariant.toString())
       .replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
@@ -105,13 +109,16 @@ class DefaultApi {
   ///
   /// Parameters:
   ///
+  /// * [ProductIdVariant] productIdVariant (required):
+  ///   Variant of a product ID.
+  ///
   /// * [String] id (required):
   ///   ID of a resource.
   ///
   /// * [String] region:
   ///   Region code.
-  Future<List<CategoryAlternatives>?> getAlternatives(String id, { String? region, }) async {
-    final response = await getAlternativesWithHttpInfo(id,  region: region, );
+  Future<List<CategoryAlternatives>?> getAlternatives(ProductIdVariant productIdVariant, String id, { String? region, }) async {
+    final response = await getAlternativesWithHttpInfo(productIdVariant, id,  region: region, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
