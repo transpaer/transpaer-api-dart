@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **descriptions** | [**List<LongText>**](LongText.md) |  | [default to const []]
 **images** | [**List<Image>**](Image.md) |  | [default to const []]
 **websites** | **List<String>** |  | [default to const []]
+**origins** | **List<String>** |  | [optional] [default to const []]
 **products** | [**List<ProductShort>**](ProductShort.md) |  | [default to const []]
 **medallions** | [**List<Medallion>**](Medallion.md) |  | [default to const []]
 

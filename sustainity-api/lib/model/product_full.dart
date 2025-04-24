@@ -17,6 +17,7 @@ class ProductFull {
     this.names = const [],
     this.descriptions = const [],
     this.images = const [],
+    this.origins = const [],
     this.manufacturers = const [],
     this.alternatives = const [],
     this.medallions = const [],
@@ -30,6 +31,8 @@ class ProductFull {
 
   List<Image> images;
 
+  List<String> origins;
+
   List<OrganisationShort> manufacturers;
 
   List<CategoryAlternatives> alternatives;
@@ -42,6 +45,7 @@ class ProductFull {
     _deepEquality.equals(other.names, names) &&
     _deepEquality.equals(other.descriptions, descriptions) &&
     _deepEquality.equals(other.images, images) &&
+    _deepEquality.equals(other.origins, origins) &&
     _deepEquality.equals(other.manufacturers, manufacturers) &&
     _deepEquality.equals(other.alternatives, alternatives) &&
     _deepEquality.equals(other.medallions, medallions);
@@ -53,12 +57,13 @@ class ProductFull {
     (names.hashCode) +
     (descriptions.hashCode) +
     (images.hashCode) +
+    (origins.hashCode) +
     (manufacturers.hashCode) +
     (alternatives.hashCode) +
     (medallions.hashCode);
 
   @override
-  String toString() => 'ProductFull[productIds=$productIds, names=$names, descriptions=$descriptions, images=$images, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions]';
+  String toString() => 'ProductFull[productIds=$productIds, names=$names, descriptions=$descriptions, images=$images, origins=$origins, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -66,6 +71,7 @@ class ProductFull {
       json[r'names'] = this.names;
       json[r'descriptions'] = this.descriptions;
       json[r'images'] = this.images;
+      json[r'origins'] = this.origins;
       json[r'manufacturers'] = this.manufacturers;
       json[r'alternatives'] = this.alternatives;
       json[r'medallions'] = this.medallions;
@@ -95,6 +101,9 @@ class ProductFull {
         names: ShortText.listFromJson(json[r'names']),
         descriptions: LongText.listFromJson(json[r'descriptions']),
         images: Image.listFromJson(json[r'images']),
+        origins: json[r'origins'] is Iterable
+            ? (json[r'origins'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
         manufacturers: OrganisationShort.listFromJson(json[r'manufacturers']),
         alternatives: CategoryAlternatives.listFromJson(json[r'alternatives']),
         medallions: Medallion.listFromJson(json[r'medallions']),

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **names** | [**List<ShortText>**](ShortText.md) |  | [default to const []]
 **descriptions** | [**List<LongText>**](LongText.md) |  | [default to const []]
 **images** | [**List<Image>**](Image.md) |  | [default to const []]
+**origins** | **List<String>** |  | [optional] [default to const []]
 **manufacturers** | [**List<OrganisationShort>**](OrganisationShort.md) |  | [default to const []]
 **alternatives** | [**List<CategoryAlternatives>**](CategoryAlternatives.md) |  | [default to const []]
 **medallions** | [**List<Medallion>**](Medallion.md) |  | [default to const []]

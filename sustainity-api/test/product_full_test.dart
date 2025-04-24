@@ -36,6 +36,11 @@ void main() {
       // TODO
     });
 
+    // List<String> origins (default value: const [])
+    test('to test the property `origins`', () async {
+      // TODO
+    });
+
     // List<OrganisationShort> manufacturers (default value: const [])
     test('to test the property `manufacturers`', () async {
       // TODO
