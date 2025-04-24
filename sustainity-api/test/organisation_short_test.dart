@@ -27,8 +27,7 @@ void main() {
       // TODO
     });
 
-    // Long string for descriptions, articles...
-    // String description
+    // LongText description
     test('to test the property `description`', () async {
       // TODO
     });

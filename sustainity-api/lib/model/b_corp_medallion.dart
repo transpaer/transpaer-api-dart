@@ -14,26 +14,33 @@ class BCorpMedallion {
   /// Returns a new [BCorpMedallion] instance.
   BCorpMedallion({
     required this.id,
+    required this.reportUrl,
   });
 
   /// ID of a resource.
   String id;
 
+  /// Long string for descriptions, articles...
+  String reportUrl;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is BCorpMedallion &&
-    other.id == id;
+    other.id == id &&
+    other.reportUrl == reportUrl;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (id.hashCode);
+    (id.hashCode) +
+    (reportUrl.hashCode);
 
   @override
-  String toString() => 'BCorpMedallion[id=$id]';
+  String toString() => 'BCorpMedallion[id=$id, reportUrl=$reportUrl]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+      json[r'report_url'] = this.reportUrl;
     return json;
   }
 
@@ -57,6 +64,7 @@ class BCorpMedallion {
 
       return BCorpMedallion(
         id: mapValueOfType<String>(json, r'id')!,
+        reportUrl: mapValueOfType<String>(json, r'report_url')!,
       );
     }
     return null;
@@ -105,6 +113,7 @@ class BCorpMedallion {
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
     'id',
+    'report_url',
   };
 }
 

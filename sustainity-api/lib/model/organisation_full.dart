@@ -18,6 +18,7 @@ class OrganisationFull {
     this.descriptions = const [],
     this.images = const [],
     this.websites = const [],
+    this.origins = const [],
     this.products = const [],
     this.medallions = const [],
   });
@@ -32,6 +33,8 @@ class OrganisationFull {
 
   List<String> websites;
 
+  List<String> origins;
+
   List<ProductShort> products;
 
   List<Medallion> medallions;
@@ -43,6 +46,7 @@ class OrganisationFull {
     _deepEquality.equals(other.descriptions, descriptions) &&
     _deepEquality.equals(other.images, images) &&
     _deepEquality.equals(other.websites, websites) &&
+    _deepEquality.equals(other.origins, origins) &&
     _deepEquality.equals(other.products, products) &&
     _deepEquality.equals(other.medallions, medallions);
 
@@ -54,11 +58,12 @@ class OrganisationFull {
     (descriptions.hashCode) +
     (images.hashCode) +
     (websites.hashCode) +
+    (origins.hashCode) +
     (products.hashCode) +
     (medallions.hashCode);
 
   @override
-  String toString() => 'OrganisationFull[organisationIds=$organisationIds, names=$names, descriptions=$descriptions, images=$images, websites=$websites, products=$products, medallions=$medallions]';
+  String toString() => 'OrganisationFull[organisationIds=$organisationIds, names=$names, descriptions=$descriptions, images=$images, websites=$websites, origins=$origins, products=$products, medallions=$medallions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -67,6 +72,7 @@ class OrganisationFull {
       json[r'descriptions'] = this.descriptions;
       json[r'images'] = this.images;
       json[r'websites'] = this.websites;
+      json[r'origins'] = this.origins;
       json[r'products'] = this.products;
       json[r'medallions'] = this.medallions;
     return json;
@@ -97,6 +103,9 @@ class OrganisationFull {
         images: Image.listFromJson(json[r'images']),
         websites: json[r'websites'] is Iterable
             ? (json[r'websites'] as Iterable).cast<String>().toList(growable: false)
+            : const [],
+        origins: json[r'origins'] is Iterable
+            ? (json[r'origins'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         products: ProductShort.listFromJson(json[r'products']),
         medallions: Medallion.listFromJson(json[r'medallions']),

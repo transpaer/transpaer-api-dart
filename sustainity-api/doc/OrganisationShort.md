@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **organisationIds** | [**OrganisationIds**](OrganisationIds.md) |  | 
 **name** | **String** | Short string for labels, titles, summaries... | 
-**description** | **String** | Long string for descriptions, articles... | [optional] 
+**description** | [**LongText**](LongText.md) |  | [optional] 
 **badges** | [**List<BadgeName>**](BadgeName.md) |  | [default to const []]
 **scores** | [**List<Score>**](Score.md) |  | [default to const []]
 

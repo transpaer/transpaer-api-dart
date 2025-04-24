@@ -22,6 +22,12 @@ void main() {
       // TODO
     });
 
+    // Long string for descriptions, articles...
+    // String reportUrl
+    test('to test the property `reportUrl`', () async {
+      // TODO
+    });
+
 
   });
 

@@ -25,14 +25,13 @@ class ProductShort {
   /// Short string for labels, titles, summaries...
   String name;
 
-  /// Long string for descriptions, articles...
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? description;
+  LongText? description;
 
   List<BadgeName> badges;
 
@@ -93,7 +92,7 @@ class ProductShort {
       return ProductShort(
         productIds: ProductIds.fromJson(json[r'productIds'])!,
         name: mapValueOfType<String>(json, r'name')!,
-        description: mapValueOfType<String>(json, r'description'),
+        description: LongText.fromJson(json[r'description']),
         badges: BadgeName.listFromJson(json[r'badges']),
         scores: Score.listFromJson(json[r'scores']),
       );
