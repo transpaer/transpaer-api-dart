@@ -21,6 +21,8 @@ class ProductFull {
     this.manufacturers = const [],
     this.alternatives = const [],
     this.medallions = const [],
+    this.shopping = const [],
+    this.media = const [],
   });
 
   ProductIds productIds;
@@ -39,6 +41,10 @@ class ProductFull {
 
   List<Medallion> medallions;
 
+  List<ShoppingEntry> shopping;
+
+  List<Medium> media;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ProductFull &&
     other.productIds == productIds &&
@@ -48,7 +54,9 @@ class ProductFull {
     _deepEquality.equals(other.origins, origins) &&
     _deepEquality.equals(other.manufacturers, manufacturers) &&
     _deepEquality.equals(other.alternatives, alternatives) &&
-    _deepEquality.equals(other.medallions, medallions);
+    _deepEquality.equals(other.medallions, medallions) &&
+    _deepEquality.equals(other.shopping, shopping) &&
+    _deepEquality.equals(other.media, media);
 
   @override
   int get hashCode =>
@@ -60,10 +68,12 @@ class ProductFull {
     (origins.hashCode) +
     (manufacturers.hashCode) +
     (alternatives.hashCode) +
-    (medallions.hashCode);
+    (medallions.hashCode) +
+    (shopping.hashCode) +
+    (media.hashCode);
 
   @override
-  String toString() => 'ProductFull[productIds=$productIds, names=$names, descriptions=$descriptions, images=$images, origins=$origins, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions]';
+  String toString() => 'ProductFull[productIds=$productIds, names=$names, descriptions=$descriptions, images=$images, origins=$origins, manufacturers=$manufacturers, alternatives=$alternatives, medallions=$medallions, shopping=$shopping, media=$media]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,6 +85,8 @@ class ProductFull {
       json[r'manufacturers'] = this.manufacturers;
       json[r'alternatives'] = this.alternatives;
       json[r'medallions'] = this.medallions;
+      json[r'shopping'] = this.shopping;
+      json[r'media'] = this.media;
     return json;
   }
 
@@ -107,6 +119,8 @@ class ProductFull {
         manufacturers: OrganisationShort.listFromJson(json[r'manufacturers']),
         alternatives: CategoryAlternatives.listFromJson(json[r'alternatives']),
         medallions: Medallion.listFromJson(json[r'medallions']),
+        shopping: ShoppingEntry.listFromJson(json[r'shopping']),
+        media: Medium.listFromJson(json[r'media']),
       );
     }
     return null;
@@ -161,6 +175,8 @@ class ProductFull {
     'manufacturers',
     'alternatives',
     'medallions',
+    'shopping',
+    'media',
   };
 }
 

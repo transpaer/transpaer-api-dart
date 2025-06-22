@@ -39,6 +39,11 @@ void main() {
       // TODO
     });
 
+    // List<ReferenceLink> links (default value: const [])
+    test('to test the property `links`', () async {
+      // TODO
+    });
+
     // Presentation presentation
     test('to test the property `presentation`', () async {
       // TODO

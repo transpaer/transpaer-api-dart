@@ -26,6 +26,7 @@ class LibraryTopic {
   static const infoColonMain = LibraryTopic._(r'info:main');
   static const infoColonForProducers = LibraryTopic._(r'info:for_producers');
   static const infoColonFaq = LibraryTopic._(r'info:faq');
+  static const infoColonGreenwashing = LibraryTopic._(r'info:greenwashing');
   static const dataColonWiki = LibraryTopic._(r'data:wiki');
   static const dataColonOpenFoodFacts = LibraryTopic._(r'data:open_food_facts');
   static const certColonBcorp = LibraryTopic._(r'cert:bcorp');
@@ -39,6 +40,7 @@ class LibraryTopic {
     infoColonMain,
     infoColonForProducers,
     infoColonFaq,
+    infoColonGreenwashing,
     dataColonWiki,
     dataColonOpenFoodFacts,
     certColonBcorp,
@@ -87,6 +89,7 @@ class LibraryTopicTypeTransformer {
         case r'info:main': return LibraryTopic.infoColonMain;
         case r'info:for_producers': return LibraryTopic.infoColonForProducers;
         case r'info:faq': return LibraryTopic.infoColonFaq;
+        case r'info:greenwashing': return LibraryTopic.infoColonGreenwashing;
         case r'data:wiki': return LibraryTopic.dataColonWiki;
         case r'data:open_food_facts': return LibraryTopic.dataColonOpenFoodFacts;
         case r'cert:bcorp': return LibraryTopic.certColonBcorp;

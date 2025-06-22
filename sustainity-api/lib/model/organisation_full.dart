@@ -19,6 +19,7 @@ class OrganisationFull {
     this.images = const [],
     this.websites = const [],
     this.origins = const [],
+    this.media = const [],
     this.products = const [],
     this.medallions = const [],
   });
@@ -35,6 +36,8 @@ class OrganisationFull {
 
   List<String> origins;
 
+  List<Medium> media;
+
   List<ProductShort> products;
 
   List<Medallion> medallions;
@@ -47,6 +50,7 @@ class OrganisationFull {
     _deepEquality.equals(other.images, images) &&
     _deepEquality.equals(other.websites, websites) &&
     _deepEquality.equals(other.origins, origins) &&
+    _deepEquality.equals(other.media, media) &&
     _deepEquality.equals(other.products, products) &&
     _deepEquality.equals(other.medallions, medallions);
 
@@ -59,11 +63,12 @@ class OrganisationFull {
     (images.hashCode) +
     (websites.hashCode) +
     (origins.hashCode) +
+    (media.hashCode) +
     (products.hashCode) +
     (medallions.hashCode);
 
   @override
-  String toString() => 'OrganisationFull[organisationIds=$organisationIds, names=$names, descriptions=$descriptions, images=$images, websites=$websites, origins=$origins, products=$products, medallions=$medallions]';
+  String toString() => 'OrganisationFull[organisationIds=$organisationIds, names=$names, descriptions=$descriptions, images=$images, websites=$websites, origins=$origins, media=$media, products=$products, medallions=$medallions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -73,6 +78,7 @@ class OrganisationFull {
       json[r'images'] = this.images;
       json[r'websites'] = this.websites;
       json[r'origins'] = this.origins;
+      json[r'media'] = this.media;
       json[r'products'] = this.products;
       json[r'medallions'] = this.medallions;
     return json;
@@ -107,6 +113,7 @@ class OrganisationFull {
         origins: json[r'origins'] is Iterable
             ? (json[r'origins'] as Iterable).cast<String>().toList(growable: false)
             : const [],
+        media: Medium.listFromJson(json[r'media']),
         products: ProductShort.listFromJson(json[r'products']),
         medallions: Medallion.listFromJson(json[r'medallions']),
       );

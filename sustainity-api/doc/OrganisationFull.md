@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **images** | [**List<Image>**](Image.md) |  | [default to const []]
 **websites** | **List<String>** |  | [default to const []]
 **origins** | **List<String>** |  | [optional] [default to const []]
+**media** | [**List<Medium>**](Medium.md) |  | [optional] [default to const []]
 **products** | [**List<ProductShort>**](ProductShort.md) |  | [default to const []]
 **medallions** | [**List<Medallion>**](Medallion.md) |  | [default to const []]
 

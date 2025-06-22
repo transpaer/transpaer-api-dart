@@ -17,6 +17,7 @@ class LibraryItemFull {
     required this.title,
     required this.summary,
     required this.article,
+    this.links = const [],
     this.presentation,
   });
 
@@ -30,6 +31,8 @@ class LibraryItemFull {
 
   /// Long string for descriptions, articles...
   String article;
+
+  List<ReferenceLink> links;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,6 +48,7 @@ class LibraryItemFull {
     other.title == title &&
     other.summary == summary &&
     other.article == article &&
+    _deepEquality.equals(other.links, links) &&
     other.presentation == presentation;
 
   @override
@@ -54,10 +58,11 @@ class LibraryItemFull {
     (title.hashCode) +
     (summary.hashCode) +
     (article.hashCode) +
+    (links.hashCode) +
     (presentation == null ? 0 : presentation!.hashCode);
 
   @override
-  String toString() => 'LibraryItemFull[id=$id, title=$title, summary=$summary, article=$article, presentation=$presentation]';
+  String toString() => 'LibraryItemFull[id=$id, title=$title, summary=$summary, article=$article, links=$links, presentation=$presentation]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -65,6 +70,7 @@ class LibraryItemFull {
       json[r'title'] = this.title;
       json[r'summary'] = this.summary;
       json[r'article'] = this.article;
+      json[r'links'] = this.links;
     if (this.presentation != null) {
       json[r'presentation'] = this.presentation;
     } else {
@@ -96,6 +102,7 @@ class LibraryItemFull {
         title: mapValueOfType<String>(json, r'title')!,
         summary: mapValueOfType<String>(json, r'summary')!,
         article: mapValueOfType<String>(json, r'article')!,
+        links: ReferenceLink.listFromJson(json[r'links']),
         presentation: Presentation.fromJson(json[r'presentation']),
       );
     }
@@ -148,6 +155,7 @@ class LibraryItemFull {
     'title',
     'summary',
     'article',
+    'links',
   };
 }
 

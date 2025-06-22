@@ -79,6 +79,9 @@ String parameterToString(dynamic value) {
   if (value is SustainityScoreCategory) {
     return SustainityScoreCategoryTypeTransformer().encode(value).toString();
   }
+  if (value is VerifiedShop) {
+    return VerifiedShopTypeTransformer().encode(value).toString();
+  }
   return value.toString();
 }
 

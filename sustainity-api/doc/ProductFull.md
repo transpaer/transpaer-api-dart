@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **manufacturers** | [**List<OrganisationShort>**](OrganisationShort.md) |  | [default to const []]
 **alternatives** | [**List<CategoryAlternatives>**](CategoryAlternatives.md) |  | [default to const []]
 **medallions** | [**List<Medallion>**](Medallion.md) |  | [default to const []]
+**shopping** | [**List<ShoppingEntry>**](ShoppingEntry.md) |  | [default to const []]
+**media** | [**List<Medium>**](Medium.md) |  | [default to const []]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
