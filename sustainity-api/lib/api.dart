@@ -44,6 +44,8 @@ part 'model/library_topic.dart';
 part 'model/long_text.dart';
 part 'model/medallion.dart';
 part 'model/medallion_variant.dart';
+part 'model/medium.dart';
+part 'model/mention.dart';
 part 'model/organisation_full.dart';
 part 'model/organisation_id_variant.dart';
 part 'model/organisation_ids.dart';
@@ -54,8 +56,10 @@ part 'model/product_full.dart';
 part 'model/product_id_variant.dart';
 part 'model/product_ids.dart';
 part 'model/product_short.dart';
+part 'model/reference_link.dart';
 part 'model/score.dart';
 part 'model/scorer_name.dart';
+part 'model/shopping_entry.dart';
 part 'model/short_text.dart';
 part 'model/sustainity_medallion.dart';
 part 'model/sustainity_score.dart';
@@ -65,6 +69,7 @@ part 'model/tco_medallion.dart';
 part 'model/text_search_link_hack.dart';
 part 'model/text_search_result.dart';
 part 'model/text_search_results.dart';
+part 'model/verified_shop.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

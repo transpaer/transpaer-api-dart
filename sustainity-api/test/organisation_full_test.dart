@@ -46,6 +46,11 @@ void main() {
       // TODO
     });
 
+    // List<Medium> media (default value: const [])
+    test('to test the property `media`', () async {
+      // TODO
+    });
+
     // List<ProductShort> products (default value: const [])
     test('to test the property `products`', () async {
       // TODO

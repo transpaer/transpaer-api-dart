@@ -18,6 +18,8 @@ doc/LibraryTopic.md
 doc/LongText.md
 doc/Medallion.md
 doc/MedallionVariant.md
+doc/Medium.md
+doc/Mention.md
 doc/OrganisationFull.md
 doc/OrganisationIdVariant.md
 doc/OrganisationIds.md
@@ -28,8 +30,10 @@ doc/ProductFull.md
 doc/ProductIdVariant.md
 doc/ProductIds.md
 doc/ProductShort.md
+doc/ReferenceLink.md
 doc/Score.md
 doc/ScorerName.md
+doc/ShoppingEntry.md
 doc/ShortText.md
 doc/SustainityMedallion.md
 doc/SustainityScore.md
@@ -39,6 +43,7 @@ doc/TcoMedallion.md
 doc/TextSearchLinkHack.md
 doc/TextSearchResult.md
 doc/TextSearchResults.md
+doc/VerifiedShop.md
 git_push.sh
 lib/api.dart
 lib/api/default_api.dart
@@ -64,6 +69,8 @@ lib/model/library_topic.dart
 lib/model/long_text.dart
 lib/model/medallion.dart
 lib/model/medallion_variant.dart
+lib/model/medium.dart
+lib/model/mention.dart
 lib/model/organisation_full.dart
 lib/model/organisation_id_variant.dart
 lib/model/organisation_ids.dart
@@ -74,8 +81,10 @@ lib/model/product_full.dart
 lib/model/product_id_variant.dart
 lib/model/product_ids.dart
 lib/model/product_short.dart
+lib/model/reference_link.dart
 lib/model/score.dart
 lib/model/scorer_name.dart
+lib/model/shopping_entry.dart
 lib/model/short_text.dart
 lib/model/sustainity_medallion.dart
 lib/model/sustainity_score.dart
@@ -85,6 +94,7 @@ lib/model/tco_medallion.dart
 lib/model/text_search_link_hack.dart
 lib/model/text_search_result.dart
 lib/model/text_search_results.dart
+lib/model/verified_shop.dart
 pubspec.yaml
 test/b_corp_medallion_test.dart
 test/badge_name_test.dart
@@ -101,6 +111,8 @@ test/library_topic_test.dart
 test/long_text_test.dart
 test/medallion_test.dart
 test/medallion_variant_test.dart
+test/medium_test.dart
+test/mention_test.dart
 test/organisation_full_test.dart
 test/organisation_id_variant_test.dart
 test/organisation_ids_test.dart
@@ -111,8 +123,10 @@ test/product_full_test.dart
 test/product_id_variant_test.dart
 test/product_ids_test.dart
 test/product_short_test.dart
+test/reference_link_test.dart
 test/score_test.dart
 test/scorer_name_test.dart
+test/shopping_entry_test.dart
 test/short_text_test.dart
 test/sustainity_medallion_test.dart
 test/sustainity_score_branch_test.dart
@@ -122,3 +136,4 @@ test/tco_medallion_test.dart
 test/text_search_link_hack_test.dart
 test/text_search_result_test.dart
 test/text_search_results_test.dart
+test/verified_shop_test.dart

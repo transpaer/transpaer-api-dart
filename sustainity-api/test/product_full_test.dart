@@ -56,6 +56,16 @@ void main() {
       // TODO
     });
 
+    // List<ShoppingEntry> shopping (default value: const [])
+    test('to test the property `shopping`', () async {
+      // TODO
+    });
+
+    // List<Medium> media (default value: const [])
+    test('to test the property `media`', () async {
+      // TODO
+    });
+
 
   });
 

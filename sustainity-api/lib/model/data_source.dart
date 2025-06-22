@@ -23,6 +23,7 @@ class DataSource {
 
   String toJson() => value;
 
+  static const sustainity = DataSource._(r'sustainity');
   static const wiki = DataSource._(r'wiki');
   static const off = DataSource._(r'off');
   static const eu = DataSource._(r'eu');
@@ -33,6 +34,7 @@ class DataSource {
 
   /// List of all possible values in this [enum][DataSource].
   static const values = <DataSource>[
+    sustainity,
     wiki,
     off,
     eu,
@@ -78,6 +80,7 @@ class DataSourceTypeTransformer {
   DataSource? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
+        case r'sustainity': return DataSource.sustainity;
         case r'wiki': return DataSource.wiki;
         case r'off': return DataSource.off;
         case r'eu': return DataSource.eu;

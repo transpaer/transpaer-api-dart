@@ -210,6 +210,10 @@ class ApiClient {
           return Medallion.fromJson(value);
         case 'MedallionVariant':
           return MedallionVariantTypeTransformer().decode(value);
+        case 'Medium':
+          return Medium.fromJson(value);
+        case 'Mention':
+          return Mention.fromJson(value);
         case 'OrganisationFull':
           return OrganisationFull.fromJson(value);
         case 'OrganisationIdVariant':
@@ -230,10 +234,14 @@ class ApiClient {
           return ProductIds.fromJson(value);
         case 'ProductShort':
           return ProductShort.fromJson(value);
+        case 'ReferenceLink':
+          return ReferenceLink.fromJson(value);
         case 'Score':
           return Score.fromJson(value);
         case 'ScorerName':
           return ScorerNameTypeTransformer().decode(value);
+        case 'ShoppingEntry':
+          return ShoppingEntry.fromJson(value);
         case 'ShortText':
           return ShortText.fromJson(value);
         case 'SustainityMedallion':
@@ -252,6 +260,8 @@ class ApiClient {
           return TextSearchResult.fromJson(value);
         case 'TextSearchResults':
           return TextSearchResults.fromJson(value);
+        case 'VerifiedShop':
+          return VerifiedShopTypeTransformer().decode(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {
