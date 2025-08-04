@@ -35,6 +35,15 @@ void main() {
       // TODO
     });
 
+    // Get category.
+    //
+    // Returns full info about a specified category.
+    //
+    //Future<CategoryFull> getCategory(String category) async
+    test('test getCategory', () async {
+      // TODO
+    });
+
     // Get library contents.
     //
     // Returns a list of summaries of all library items.

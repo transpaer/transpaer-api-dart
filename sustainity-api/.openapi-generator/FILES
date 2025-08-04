@@ -6,6 +6,9 @@ analysis_options.yaml
 doc/BCorpMedallion.md
 doc/BadgeName.md
 doc/CategoryAlternatives.md
+doc/CategoryFull.md
+doc/CategoryShort.md
+doc/CategoryStatus.md
 doc/DataSource.md
 doc/DefaultApi.md
 doc/EuEcolabelMedallion.md
@@ -58,6 +61,9 @@ lib/auth/oauth.dart
 lib/model/b_corp_medallion.dart
 lib/model/badge_name.dart
 lib/model/category_alternatives.dart
+lib/model/category_full.dart
+lib/model/category_short.dart
+lib/model/category_status.dart
 lib/model/data_source.dart
 lib/model/eu_ecolabel_medallion.dart
 lib/model/fti_medallion.dart
@@ -99,6 +105,9 @@ pubspec.yaml
 test/b_corp_medallion_test.dart
 test/badge_name_test.dart
 test/category_alternatives_test.dart
+test/category_full_test.dart
+test/category_short_test.dart
+test/category_status_test.dart
 test/data_source_test.dart
 test/default_api_test.dart
 test/eu_ecolabel_medallion_test.dart

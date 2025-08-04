@@ -58,6 +58,9 @@ String parameterToString(dynamic value) {
   if (value is BadgeName) {
     return BadgeNameTypeTransformer().encode(value).toString();
   }
+  if (value is CategoryStatus) {
+    return CategoryStatusTypeTransformer().encode(value).toString();
+  }
   if (value is DataSource) {
     return DataSourceTypeTransformer().encode(value).toString();
   }
