@@ -16,8 +16,13 @@ void main() {
   // final instance = CategoryAlternatives();
 
   group('test CategoryAlternatives', () {
-    // String category
-    test('to test the property `category`', () async {
+    // String categoryId
+    test('to test the property `categoryId`', () async {
+      // TODO
+    });
+
+    // String categoryLabel
+    test('to test the property `categoryLabel`', () async {
       // TODO
     });
 

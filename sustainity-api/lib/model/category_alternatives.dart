@@ -13,31 +13,37 @@ part of openapi.api;
 class CategoryAlternatives {
   /// Returns a new [CategoryAlternatives] instance.
   CategoryAlternatives({
-    required this.category,
+    required this.categoryId,
+    required this.categoryLabel,
     this.alternatives = const [],
   });
 
-  String category;
+  String categoryId;
+
+  String categoryLabel;
 
   List<ProductShort> alternatives;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CategoryAlternatives &&
-    other.category == category &&
+    other.categoryId == categoryId &&
+    other.categoryLabel == categoryLabel &&
     _deepEquality.equals(other.alternatives, alternatives);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (category.hashCode) +
+    (categoryId.hashCode) +
+    (categoryLabel.hashCode) +
     (alternatives.hashCode);
 
   @override
-  String toString() => 'CategoryAlternatives[category=$category, alternatives=$alternatives]';
+  String toString() => 'CategoryAlternatives[categoryId=$categoryId, categoryLabel=$categoryLabel, alternatives=$alternatives]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'category'] = this.category;
+      json[r'category_id'] = this.categoryId;
+      json[r'category_label'] = this.categoryLabel;
       json[r'alternatives'] = this.alternatives;
     return json;
   }
@@ -61,7 +67,8 @@ class CategoryAlternatives {
       }());
 
       return CategoryAlternatives(
-        category: mapValueOfType<String>(json, r'category')!,
+        categoryId: mapValueOfType<String>(json, r'category_id')!,
+        categoryLabel: mapValueOfType<String>(json, r'category_label')!,
         alternatives: ProductShort.listFromJson(json[r'alternatives']),
       );
     }
@@ -110,7 +117,8 @@ class CategoryAlternatives {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'category',
+    'category_id',
+    'category_label',
     'alternatives',
   };
 }

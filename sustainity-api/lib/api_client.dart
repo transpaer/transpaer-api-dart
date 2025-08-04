@@ -188,6 +188,12 @@ class ApiClient {
           return BadgeNameTypeTransformer().decode(value);
         case 'CategoryAlternatives':
           return CategoryAlternatives.fromJson(value);
+        case 'CategoryFull':
+          return CategoryFull.fromJson(value);
+        case 'CategoryShort':
+          return CategoryShort.fromJson(value);
+        case 'CategoryStatus':
+          return CategoryStatusTypeTransformer().decode(value);
         case 'DataSource':
           return DataSourceTypeTransformer().decode(value);
         case 'EuEcolabelMedallion':

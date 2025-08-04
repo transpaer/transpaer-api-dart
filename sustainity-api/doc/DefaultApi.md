@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**checkHealth**](DefaultApi.md#checkhealth) | **GET** / | Health check
 [**getAlternatives**](DefaultApi.md#getalternatives) | **GET** /product/{productIdVariant}:{id}/alternatives | Get product alternatives.
+[**getCategory**](DefaultApi.md#getcategory) | **GET** /category/{category} | Get category.
 [**getLibrary**](DefaultApi.md#getlibrary) | **GET** /library | Get library contents.
 [**getLibraryItem**](DefaultApi.md#getlibraryitem) | **GET** /library/{topic} | Get library item.
 [**getOrganisation**](DefaultApi.md#getorganisation) | **GET** /organisation/{organisationIdVariant}:{id} | Get organisation.
@@ -91,6 +92,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**List<CategoryAlternatives>**](CategoryAlternatives.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCategory**
+> CategoryFull getCategory(category)
+
+Get category.
+
+Returns full info about a specified category.
+
+### Example
+```dart
+import 'package:sustainity_api/api.dart';
+
+final api_instance = DefaultApi();
+final category = category_example; // String | Category path.
+
+try {
+    final result = api_instance.getCategory(category);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->getCategory: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **category** | **String**| Category path. | 
+
+### Return type
+
+[**CategoryFull**](CategoryFull.md)
 
 ### Authorization
 

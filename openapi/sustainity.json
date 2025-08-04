@@ -1,0 +1,450 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sustainity",
+    "description": "API for the sustaininty backend\n",
+    "version": "0.4.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "checkHealth",
+        "summary": "Health check",
+        "description": "Service health check.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/text": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/query"
+        }
+      ],
+      "get": {
+        "operationId": "searchByText",
+        "summary": "Text search.",
+        "description": "Returns results of a search using a text query.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/textSearchResults",
+                  "required": true,
+                  "nullable": false
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/library": {
+      "get": {
+        "operationId": "getLibrary",
+        "summary": "Get library contents.",
+        "description": "Returns a list of summaries of all library items.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/libraryContents"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/library/{topic}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/libraryTopic"
+        }
+      ],
+      "get": {
+        "operationId": "getLibraryItem",
+        "summary": "Get library item.",
+        "description": "Returns a full library item.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/libraryItemFull"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organisation/{organisationIdVariant}:{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/organisationIdVariant"
+        },
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "get": {
+        "operationId": "getOrganisation",
+        "summary": "Get organisation.",
+        "description": "Returns full info about a specified organisation.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/organisationFull"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{productIdVariant}:{id}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/productIdVariant"
+        },
+        {
+          "$ref": "#/components/parameters/id"
+        },
+        {
+          "$ref": "#/components/parameters/regionCode"
+        }
+      ],
+      "get": {
+        "operationId": "getProduct",
+        "summary": "Get product.",
+        "description": "Returns full info about a specified product.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/productFull"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{productIdVariant}:{id}/alternatives": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/productIdVariant"
+        },
+        {
+          "$ref": "#/components/parameters/id"
+        },
+        {
+          "$ref": "#/components/parameters/regionCode"
+        }
+      ],
+      "get": {
+        "operationId": "getAlternatives",
+        "summary": "Get product alternatives.",
+        "description": "Returns a list of alternative products for each of products category.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "schemas.json#/$defs/categoryAlternatives"
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/category/{category}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/category"
+        }
+      ],
+      "get": {
+        "operationId": "getCategory",
+        "summary": "Get category.",
+        "description": "Returns full info about a specified category.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schemas.json#/$defs/categoryFull"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "$ref": "#/components/headers/corsOrigin"
+              },
+              "Access-Control-Allow-Methods": {
+                "$ref": "#/components/headers/corsMethods"
+              },
+              "Access-Control-Allow-Headers": {
+                "$ref": "#/components/headers/corsHeaders"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "organisationIdVariant": {
+        "name": "organisationIdVariant",
+        "description": "Variant of an organisation ID.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/organisationIdVariant"
+        }
+      },
+      "productIdVariant": {
+        "name": "productIdVariant",
+        "description": "Variant of a product ID.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/productIdVariant"
+        }
+      },
+      "id": {
+        "name": "id",
+        "description": "ID of a resource.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/id"
+        }
+      },
+      "category": {
+        "name": "category",
+        "description": "Category path.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/category"
+        }
+      },
+      "regionCode": {
+        "name": "region",
+        "description": "Region code.",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "$ref": "schemas.json#/$defs/regionCode"
+        }
+      },
+      "libraryTopic": {
+        "name": "topic",
+        "description": "Library topic.",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/libraryTopic"
+        }
+      },
+      "query": {
+        "name": "query",
+        "description": "Text query for search.",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "$ref": "schemas.json#/$defs/shortString"
+        }
+      }
+    },
+    "headers": {
+      "corsOrigin": {
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "corsMethods": {
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "corsHeaders": {
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    }
+  }
+}

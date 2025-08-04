@@ -60,6 +60,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**checkHealth**](doc//DefaultApi.md#checkhealth) | **GET** / | Health check
 *DefaultApi* | [**getAlternatives**](doc//DefaultApi.md#getalternatives) | **GET** /product/{productIdVariant}:{id}/alternatives | Get product alternatives.
+*DefaultApi* | [**getCategory**](doc//DefaultApi.md#getcategory) | **GET** /category/{category} | Get category.
 *DefaultApi* | [**getLibrary**](doc//DefaultApi.md#getlibrary) | **GET** /library | Get library contents.
 *DefaultApi* | [**getLibraryItem**](doc//DefaultApi.md#getlibraryitem) | **GET** /library/{topic} | Get library item.
 *DefaultApi* | [**getOrganisation**](doc//DefaultApi.md#getorganisation) | **GET** /organisation/{organisationIdVariant}:{id} | Get organisation.
@@ -72,6 +73,9 @@ Class | Method | HTTP request | Description
  - [BCorpMedallion](doc//BCorpMedallion.md)
  - [BadgeName](doc//BadgeName.md)
  - [CategoryAlternatives](doc//CategoryAlternatives.md)
+ - [CategoryFull](doc//CategoryFull.md)
+ - [CategoryShort](doc//CategoryShort.md)
+ - [CategoryStatus](doc//CategoryStatus.md)
  - [DataSource](doc//DataSource.md)
  - [EuEcolabelMedallion](doc//EuEcolabelMedallion.md)
  - [FtiMedallion](doc//FtiMedallion.md)
