@@ -149,7 +149,7 @@
       "description": "Describes where the related data was retrieved from.",
       "type": "string",
       "enum": [
-        "sustainity",
+        "transpaer",
         "wiki",
         "off",
         "eu",
@@ -360,8 +360,8 @@
         "items"
       ]
     },
-    "sustainityScoreCategory": {
-      "description": "Categories in the sustainity score",
+    "transpaerScoreCategory": {
+      "description": "Categories in the transpaer score",
       "type": "string",
       "enum": [
         "dataAvailability",
@@ -376,12 +376,12 @@
         "atLeastTwoCerts"
       ]
     },
-    "sustainityScoreBranch": {
-      "description": "Part of explanation of calculation of the Sustainity score.",
+    "transpaerScoreBranch": {
+      "description": "Part of explanation of calculation of the Transpaer score.",
       "type": "object",
       "properties": {
         "category": {
-          "$ref": "#/$defs/sustainityScoreCategory"
+          "$ref": "#/$defs/transpaerScoreCategory"
         },
         "weight": {
           "type": "integer"
@@ -393,7 +393,7 @@
         "branches": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/sustainityScoreBranch"
+            "$ref": "#/$defs/transpaerScoreBranch"
           }
         }
       },
@@ -404,8 +404,8 @@
         "branches"
       ]
     },
-    "sustainityScore": {
-      "description": "Explanation of calculation of the Sustainity score.",
+    "transpaerScore": {
+      "description": "Explanation of calculation of the Transpaer score.",
       "type": "object",
       "properties": {
         "total": {
@@ -415,7 +415,7 @@
         "tree": {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/sustainityScoreBranch"
+            "$ref": "#/$defs/transpaerScoreBranch"
           }
         }
       },
@@ -462,12 +462,12 @@
         "score"
       ]
     },
-    "sustainityMedallion": {
-      "description": "Details of Sustainity evaluation.",
+    "transpaerMedallion": {
+      "description": "Details of Transpaer evaluation.",
       "type": "object",
       "properties": {
         "score": {
-          "$ref": "#/$defs/sustainityScore"
+          "$ref": "#/$defs/transpaerScore"
         }
       },
       "required": [
@@ -493,7 +493,7 @@
         "bCorp",
         "euEcolabel",
         "fti",
-        "sustainity",
+        "transpaer",
         "tco"
       ]
     },
@@ -546,8 +546,8 @@
         "fti": {
           "$ref": "#/$defs/ftiMedallion"
         },
-        "sustainity": {
-          "$ref": "#/$defs/sustainityMedallion"
+        "transpaer": {
+          "$ref": "#/$defs/transpaerMedallion"
         },
         "tco": {
           "$ref": "#/$defs/tcoMedallion"
