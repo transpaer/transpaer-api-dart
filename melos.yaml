@@ -1,7 +1,7 @@
-name: sustainity
+name: transpaer
 
 packages:
-  - "sustainity-api"
+  - "transpaer-api"
 
 scripts:
   packages:

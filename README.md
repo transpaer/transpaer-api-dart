@@ -1,10 +1,10 @@
-# Sustainity
+# Transpaer
 
-This repository defines the public API for the Sustainity project for Dart programming language.
+This repository defines the public API for the Transpaer project for Dart programming language.
 
-More on the sustainity project on its website: [sustainity.dev](https://sustainity.dev/).
+More on the Transpaer project on its website: [transpaer.app](https://transpaer.app/).
 
-The API definition itself can be found in [a separate repositiory](https://github.com/sustainity-dev/sustainity-api).
+The API definition itself can be found in [a separate repositiory](https://github.com/transpaer/transpaer-api).
 
 # For manintainers
 
@@ -16,6 +16,6 @@ To update the code:
 
 1. Install `openapi-generator`.
 
-2. Copy the updated API definition from [its repository](https://github.com/sustainity-dev/sustainity-api) to `openapi` directory.
+2. Copy the updated API definition from [its repository](https://github.com/transpaer/transpaer-api) to `openapi` directory.
 
 3. Run `sh ./scripts/generate.sh`.
