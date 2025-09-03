@@ -278,17 +278,12 @@
       "description": "Name of a topic in the library.",
       "type": "string",
       "enum": [
-        "info:main",
-        "info:for_producers",
-        "info:faq",
-        "info:greenwashing",
-        "data:wiki",
-        "data:open_food_facts",
-        "cert:bcorp",
-        "cert:eu_ecolabel",
-        "cert:tco",
-        "cert:fti",
-        "other:not_found"
+        "wiki",
+        "open_food_facts",
+        "bcorp",
+        "eu_ecolabel",
+        "tco",
+        "fti"
       ]
     },
     "libraryItemShort": {
