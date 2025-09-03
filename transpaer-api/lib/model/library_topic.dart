@@ -23,31 +23,21 @@ class LibraryTopic {
 
   String toJson() => value;
 
-  static const infoColonMain = LibraryTopic._(r'info:main');
-  static const infoColonForProducers = LibraryTopic._(r'info:for_producers');
-  static const infoColonFaq = LibraryTopic._(r'info:faq');
-  static const infoColonGreenwashing = LibraryTopic._(r'info:greenwashing');
-  static const dataColonWiki = LibraryTopic._(r'data:wiki');
-  static const dataColonOpenFoodFacts = LibraryTopic._(r'data:open_food_facts');
-  static const certColonBcorp = LibraryTopic._(r'cert:bcorp');
-  static const certColonEuEcolabel = LibraryTopic._(r'cert:eu_ecolabel');
-  static const certColonTco = LibraryTopic._(r'cert:tco');
-  static const certColonFti = LibraryTopic._(r'cert:fti');
-  static const otherColonNotFound = LibraryTopic._(r'other:not_found');
+  static const wiki = LibraryTopic._(r'wiki');
+  static const openFoodFacts = LibraryTopic._(r'open_food_facts');
+  static const bcorp = LibraryTopic._(r'bcorp');
+  static const euEcolabel = LibraryTopic._(r'eu_ecolabel');
+  static const tco = LibraryTopic._(r'tco');
+  static const fti = LibraryTopic._(r'fti');
 
   /// List of all possible values in this [enum][LibraryTopic].
   static const values = <LibraryTopic>[
-    infoColonMain,
-    infoColonForProducers,
-    infoColonFaq,
-    infoColonGreenwashing,
-    dataColonWiki,
-    dataColonOpenFoodFacts,
-    certColonBcorp,
-    certColonEuEcolabel,
-    certColonTco,
-    certColonFti,
-    otherColonNotFound,
+    wiki,
+    openFoodFacts,
+    bcorp,
+    euEcolabel,
+    tco,
+    fti,
   ];
 
   static LibraryTopic? fromJson(dynamic value) => LibraryTopicTypeTransformer().decode(value);
@@ -86,17 +76,12 @@ class LibraryTopicTypeTransformer {
   LibraryTopic? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'info:main': return LibraryTopic.infoColonMain;
-        case r'info:for_producers': return LibraryTopic.infoColonForProducers;
-        case r'info:faq': return LibraryTopic.infoColonFaq;
-        case r'info:greenwashing': return LibraryTopic.infoColonGreenwashing;
-        case r'data:wiki': return LibraryTopic.dataColonWiki;
-        case r'data:open_food_facts': return LibraryTopic.dataColonOpenFoodFacts;
-        case r'cert:bcorp': return LibraryTopic.certColonBcorp;
-        case r'cert:eu_ecolabel': return LibraryTopic.certColonEuEcolabel;
-        case r'cert:tco': return LibraryTopic.certColonTco;
-        case r'cert:fti': return LibraryTopic.certColonFti;
-        case r'other:not_found': return LibraryTopic.otherColonNotFound;
+        case r'wiki': return LibraryTopic.wiki;
+        case r'open_food_facts': return LibraryTopic.openFoodFacts;
+        case r'bcorp': return LibraryTopic.bcorp;
+        case r'eu_ecolabel': return LibraryTopic.euEcolabel;
+        case r'tco': return LibraryTopic.tco;
+        case r'fti': return LibraryTopic.fti;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
