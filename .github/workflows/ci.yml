@@ -38,8 +38,10 @@ jobs:
   tag:
     name: Tag
     needs: ci
-    uses: transpaer/github-workflows/.github/workflows/tag-dart.yml@v0.1.0
+    uses: transpaer/github-workflows/.github/workflows/tag-dart.yml@v0.1.1
     permissions:
       contents: write
+    with:
+      pubspec_path: transpaer-api/pubspec.yaml
     secrets:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
